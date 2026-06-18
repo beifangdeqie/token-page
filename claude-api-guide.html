@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>国内使用Claude API最省钱方案（2026最新）| 图文教程</title>
+    <meta name="description" content="2026年国内使用Claude API的完整指南：对比官方订阅vs中转代理的成本差异，教你用最低价格调用Claude Opus/Sonnet/Haiku，附一键注册教程。">
+    <meta name="keywords" content="Claude API 国内,Claude Opus API,Claude中转,AI API代理,ChatGPT API低价,Token中转,Claude API教程">
+    <meta property="og:title" content="国内使用Claude API最省钱方案（2026最新）">
+    <meta property="og:description" content="2026年国内使用Claude API的完整指南：对比官方订阅vs中转代理成本差异，教你最低价格调用Claude全系列模型。">
+    <meta property="og:url" content="https://beifangdeqie.github.io/token-page/claude-api-guide.html">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://beifangdeqie.github.io/token-page/claude-api-guide.html">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "国内使用Claude API最省钱方案——Token中转代理完整教程",
+        "description": "2026年国内使用Claude、ChatGPT API的最省钱方案。Token中转代理完整教程，比官方便宜50%，支持支付宝。",
+        "datePublished": "2026-06-15",
+        "author": {"@type":"Person","name":"Token中转代理"}
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {"@type":"Question","name":"Claude API 在国内怎么用？","acceptedAnswer":{"@type":"Answer","text":"通过Token中转代理平台，直接使用人民币付款，无需海外信用卡。注册后获取API Key即可接入各类AI工具。"}},
+            {"@type":"Question","name":"中转代理比官方便宜多少？","acceptedAnswer":{"@type":"Answer","text":"约为官方价格的50-60%，同时支持支付宝/微信付款，无汇率损失和银行卡手续费。"}},
+            {"@type":"Question","name":"支持哪些AI工具？","acceptedAnswer":{"@type":"Answer","text":"支持CherryStudio、Cline、VSCode、Kiro等主流AI开发工具，兼容OpenAI和Anthropic双协议。"}}
+        ]
+    }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #1a1a2e; line-height: 1.8; background: #f8fafc; }
+        .container { max-width: 800px; margin: 0 auto; padding: 2rem 1.5rem; }
+        header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 3rem 1.5rem; text-align: center; }
+        header h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+        header p { opacity: 0.9; font-size: 1.1rem; }
+        h2 { font-size: 1.5rem; margin: 2.5rem 0 1rem; color: #667eea; border-left: 4px solid #667eea; padding-left: 1rem; }
+        h3 { font-size: 1.2rem; margin: 1.5rem 0 0.8rem; color: #333; }
+        p { margin: 0.8rem 0; color: #444; }
+        ul, ol { margin: 0.8rem 0 0.8rem 1.5rem; }
+        li { margin: 0.4rem 0; color: #444; }
+        .table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+        table { width: 100%; border-collapse: collapse; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+        th, td { padding: 0.8rem 1rem; text-align: left; border-bottom: 1px solid #e2e8f0; }
+        th { background: #667eea; color: white; font-weight: 600; }
+        tr:hover { background: #f1f5f9; }
+        .cta { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-align: center; padding: 2rem; border-radius: 16px; margin: 2rem 0; }
+        .cta h2 { color: white; border: none; padding: 0; margin-top: 0; font-size: 1.4rem; }
+        .cta p { color: rgba(255,255,255,0.9); }
+        .btn { display: inline-block; background: white; color: #667eea; padding: 0.8rem 2.5rem; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 1.1rem; margin-top: 1rem; transition: transform 0.2s; }
+        .btn:hover { transform: scale(1.05); }
+        .highlight { background: #fef3c7; padding: 0.2rem 0.5rem; border-radius: 4px; font-weight: 600; }
+        .tip { background: #e8f4fd; border-left: 4px solid #3b82f6; padding: 1rem 1.5rem; border-radius: 0 8px 8px 0; margin: 1.5rem 0; }
+        .tip strong { color: #1d4ed8; }
+        .step { background: white; border-radius: 12px; padding: 1.5rem; margin: 1rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        .step-num { display: inline-block; background: #667eea; color: white; width: 28px; height: 28px; text-align: center; border-radius: 50%; margin-right: 0.5rem; font-weight: 700; font-size: 0.9rem; line-height: 28px; }
+        footer { text-align: center; padding: 2rem; color: #94a3b8; font-size: 0.9rem; border-top: 1px solid #e2e8f0; margin-top: 3rem; }
+        footer a { color: #667eea; }
+        @media (max-width: 600px) { header h1 { font-size: 1.3rem; } }
+    </style>
+</head>
+<body>
+<header>
+    <h1>🚀 国内使用 Claude API 最省钱方案（2026最新）</h1>
+    <p>告别 $20/月订阅限制，按量付费 + 白嫖 20% 佣金返利</p>
+</header>
+
+<div class="container">
+    <h2>一、你为什么需要 Claude API？</h2>
+    <p>2026年，Claude 系列模型（Opus 4.6、Sonnet 4.6、Haiku 4.5）在编程、写作、分析推理等领域已经是行业标杆。但国内用户面临两个痛点：</p>
+    <ul>
+        <li>🚫 官方订阅 <span class="highlight">$20/月</span>，而且需要境外信用卡 + 稳定的梯子</li>
+        <li>📉 订阅版有使用次数限制，高强度编码/写作场景根本不够用</li>
+    </ul>
+    <p>用 <strong>API 中转</strong> 就完美解决了这些问题——按量付费，用多少花多少，价格只有官方的 <span class="highlight">1/3 ～ 1/2</span>。</p>
+
+    <h2>二、三种方案成本对比</h2>
+    <div class="table-wrap">
+        <table>
+            <tr><th>方案</th><th>月费用</th><th>境外卡</th><th>梯子</th><th>使用限制</th></tr>
+            <tr><td>Claude 官方订阅</td><td>$20/月</td><td>✅ 需要</td><td>✅ 需要</td><td>有频率限制</td></tr>
+            <tr><td>OpenAI 官方 API</td><td>按量，单价高</td><td>✅ 需要</td><td>✅ 需要</td><td>无限制</td></tr>
+            <tr><td><strong>Token 中转 API 🔥</strong></td><td><strong>按量，低至官价 1/3</strong></td><td>❌ 不需要</td><td>❌ 不需要</td><td><strong>无限制</strong></td></tr>
+        </table>
+    </div>
+
+    <div class="tip">
+        <strong>💡 省钱结论：</strong> 日均消耗 $1 左右的开发/写作用户，Token 中转全年比官方订阅省 <strong>$300+</strong>。
+    </div>
+
+    <h2>三、支持的模型</h2>
+    <ul>
+        <li><strong>Claude Opus 4.6</strong> — 最强推理能力，适合复杂编程/科研</li>
+        <li><strong>Claude Sonnet 4.6</strong> — 性价比之王，日常编码/写作首选</li>
+        <li><strong>Claude Haiku 4.5</strong> — 快速响应，适合简单问答/摘要</li>
+    </ul>
+    <p>全部支持 <strong>100% 缓存命中</strong>，重复对话几乎免费。</p>
+
+    <h2>四、三步开始使用（2分钟搞定）</h2>
+
+    <div class="step">
+        <p><span class="step-num">1</span><strong> 注册账号</strong></p>
+        <p>👉 <a href="https://shop.xuedingtoken1.com/?invite=U8MP9YYJ" target="_blank">点击注册 Token 中转账号</a>，用邮箱注册即可，无需境外卡、无需梯子。</p>
+    </div>
+
+    <div class="step">
+        <p><span class="step-num">2</span><strong> 充值购买</strong></p>
+        <p>注册后在商店选择需要的额度套餐，微信/支付宝均可支付。购买后获得兑换码。</p>
+    </div>
+
+    <div class="step">
+        <p><span class="step-num">3</span><strong> 兑换使用</strong></p>
+        <p>在主站兑换中心粘贴兑换码，余额立即到账。然后在你的 AI 工具中配置 API 地址：</p>
+        <ul>
+            <li>OpenAI 协议：<code>https://xuedingtoken.com/v1</code></li>
+            <li>Anthropic 协议：<code>https://xuedingtoken.com</code></li>
+        </ul>
+        <p>支持 CherryStudio / Cline / VSCode / Kiro 等 20+ 主流工具。</p>
+    </div>
+
+    <div class="cta">
+        <h2>🎁 限时福利：注册即享 20% 佣金返利</h2>
+        <p>邀请好友注册，好友每次消费你都能获得 <strong>20% 佣金</strong>，终身绑定。零成本开启 AI 时代的被动收入。</p>
+        <a href="https://shop.xuedingtoken1.com/?invite=U8MP9YYJ" target="_blank" class="btn">👉 立即注册</a>
+    </div>
+
+    <h2>五、常见问题</h2>
+    <h3>Q: 需要梯子吗？</h3>
+    <p>不需要。中转服务已解决网络问题，国内直连可用。</p>
+
+    <h3>Q: 支持哪些支付方式？</h3>
+    <p>微信、支付宝均可，人民币结算。</p>
+
+    <h3>Q: 余额会过期吗？</h3>
+    <p>不会。充值的余额永不过期，想用随时用。</p>
+
+    <h3>Q: API 和官方模型效果一样吗？</h3>
+    <p>完全一样。中转服务调用的是官方 API，只是帮你解决了网络和支付问题。100% 缓存命中率，响应速度甚至比直连更快。</p>
+
+    <h3>Q: 如何赚取佣金？</h3>
+    <p>注册后你会获得专属推广链接，任何人通过你的链接注册，他们每次消费你都能获得 <strong>20% 佣金</strong>。绑定关系永久有效。</p>
+
+    <div class="tip">
+        <strong>📖 更多详情：</strong> 查看 <a href="https://beifangdeqie.github.io/token-page/" target="_blank">完整的新手教程和赚钱攻略 →</a>
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 Token 中转代理 · 联系微信：Ya559890 · 
+    <a href="https://beifangdeqie.github.io/token-page/">返回首页</a></p>
+</footer>
+</body>
+</html>

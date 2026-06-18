@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+    <title>Token中转代理 - AI API 省钱方案</title>
+    <link>https://beifangdeqie.github.io/token-page/</link>
+    <description>国内最省钱的Claude/ChatGPT API中转方案，20%佣金返利。中文AI开发者的API省钱指南。</description>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 15 Jun 2026 03:30:00 GMT</lastBuildDate>
+    <atom:link href="https://beifangdeqie.github.io/token-page/rss.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+        <title>Claude API 新手入门教程：从注册到调用，10分钟上手</title>
+        <link>https://beifangdeqie.github.io/token-page/api-starter.html</link>
+        <guid>https://beifangdeqie.github.io/token-page/api-starter.html</guid>
+        <description>2026年最新Claude API入门教程。手把手教你获取API Key、配置CherryStudio、调用Claude Opus/Sonnet/Haiku。新手友好，无需编程基础。</description>
+        <pubDate>Mon, 15 Jun 2026 03:30:00 GMT</pubDate>
+    </item>
+
+    <item>
+        <title>2026年 AI 开发者工具推荐：CherryStudio / Cline / VSCode 最佳搭配方案</title>
+        <link>https://beifangdeqie.github.io/token-page/ai-tools.html</link>
+        <guid>https://beifangdeqie.github.io/token-page/ai-tools.html</guid>
+        <description>2026年最新AI开发工具推荐。CherryStudio、Cline、VSCode Copilot、Kiro等主流AI工具横评。搭配雪顶Token API中转，成本降低50%。</description>
+        <pubDate>Mon, 15 Jun 2026 03:30:00 GMT</pubDate>
+    </item>
+
+    <item>
+        <title>Claude/ChatGPT API 怎么买最便宜？官方 vs 中转代理完整对比</title>
+        <link>https://beifangdeqie.github.io/token-page/api-compare.html</link>
+        <guid>https://beifangdeqie.github.io/token-page/api-compare.html</guid>
+        <description>2026年最新API价格对比：Claude Opus/GPT-4o官方直连 vs Token中转代理，哪个更划算？含价格计算器和省钱技巧。</description>
+        <pubDate>Mon, 15 Jun 2026 03:30:00 GMT</pubDate>
+    </item>
+
+    <item>
+        <title>程序员副业推荐：Token API 分销，被动收入月入过千</title>
+        <link>https://beifangdeqie.github.io/token-page/sideline-guide.html</link>
+        <guid>https://beifangdeqie.github.io/token-page/sideline-guide.html</guid>
+        <description>最适合程序员的副业——Token API中转分销。零成本启动，永久20%佣金返利，一次推广终身受益。真实案例和收入分析。</description>
+        <pubDate>Mon, 15 Jun 2026 03:30:00 GMT</pubDate>
+    </item>
+
+    <item>
+        <title>国内使用Claude API最省钱方案——Token中转代理完整教程</title>
+        <link>https://beifangdeqie.github.io/token-page/claude-api-guide.html</link>
+        <guid>https://beifangdeqie.github.io/token-page/claude-api-guide.html</guid>
+        <description>2026年国内使用Claude、ChatGPT API的最省钱方案。Token中转代理完整教程，比官方便宜50%，支持支付宝微信付款。</description>
+        <pubDate>Mon, 15 Jun 2026 03:30:00 GMT</pubDate>
+    </item>
+
+</channel>
+</rss>

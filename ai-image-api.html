@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow">
+  <link rel="canonical" href="https://beifangdeqie.github.io/token-page/ai-image-api.html">
+
+  <title>AI绘画API 国内使用指南：Midjourney / DALL-E / Stable Diffusion 中转方案</title>
+  <meta name="description" content="2026年国内使用Midjourney、DALL-E、Stable Diffusion等AI绘画API的最优方案。Token中转代理支持主流AI绘画接口，比官方便宜50%，支付宝微信付款。">
+  <meta name="keywords" content="AI绘画API,Midjourney API 国内怎么用,DALL-E API 代理,AI绘画接口,Stable Diffusion API,AI绘画中转,Token代理,AI绘画接口对接">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="AI绘画API 国内使用指南：Midjourney / DALL-E / Stable Diffusion 中转方案">
+  <meta property="og:description" content="2026年国内使用Midjourney、DALL-E、Stable Diffusion等AI绘画API的最优方案。Token中转代理支持主流AI绘画接口，比官方便宜50%，支付宝微信付款。">
+  <meta property="og:url" content="https://beifangdeqie.github.io/token-page/ai-image-api.html">
+  <meta property="og:site_name" content="Token代理 - AI绘画API中转服务">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:image" content="https://beifangdeqie.github.io/token-page/og-image.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI绘画API 国内使用指南：Midjourney / DALL-E / Stable Diffusion 中转方案">
+  <meta name="twitter:description" content="2026年国内使用Midjourney、DALL-E、Stable Diffusion等AI绘画API的最优方案。比官方便宜50%，支付宝微信付款。">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "AI绘画API 国内使用指南：Midjourney / DALL-E / Stable Diffusion 中转方案",
+    "description": "2026年国内使用Midjourney、DALL-E、Stable Diffusion等AI绘画API的最优方案。Token中转代理支持主流AI绘画接口，比官方便宜50%，支付宝微信付款。",
+    "author": {
+      "@type": "Organization",
+      "name": "Token代理",
+      "url": "https://beifangdeqie.github.io/token-page/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Token代理",
+      "url": "https://beifangdeqie.github.io/token-page/"
+    },
+    "datePublished": "2026-06-15",
+    "dateModified": "2026-06-15",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://beifangdeqie.github.io/token-page/ai-image-api.html"
+    },
+    "image": "https://beifangdeqie.github.io/token-page/og-image.png",
+    "inLanguage": "zh-CN"
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg-dark: #0f0f1a;
+      --bg-card: #1a1a2e;
+      --bg-card-hover: #222240;
+      --accent: #a78bfa;
+      --accent-dark: #7c3aed;
+      --text-primary: #e2e8f0;
+      --text-secondary: #a0aec0;
+      --border: rgba(167, 139, 250, 0.15);
+      --gradient: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%);
+      --gradient-bg: linear-gradient(180deg, #0f0f1a 0%, #1a1030 50%, #0f0f1a 100%);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background: var(--gradient-bg);
+      color: var(--text-primary);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    header {
+      padding: 60px 0 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(167, 139, 250, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .logo {
+      display: inline-block;
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    .subtitle {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Hero CTA */
+    .hero-cta {
+      margin-top: 28px;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--gradient);
+      color: #fff;
+      padding: 14px 40px;
+      border-radius: 50px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(124, 58, 237, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 30px rgba(124, 58, 237, 0.5);
+    }
+
+    /* Sections */
+    section {
+      padding: 40px 0;
+    }
+
+    section h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 20px;
+      padding-left: 16px;
+      border-left: 4px solid var(--accent-dark);
+    }
+
+    section h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 24px 0 12px;
+    }
+
+    section p, section li {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      margin-bottom: 12px;
+    }
+
+    section ul, section ol {
+      padding-left: 24px;
+      margin-bottom: 16px;
+    }
+
+    section li {
+      margin-bottom: 8px;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 24px;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      background: var(--bg-card-hover);
+      border-color: rgba(167, 139, 250, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: var(--accent);
+      font-size: 1.15rem;
+    }
+
+    /* Price Table */
+    .price-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .price-table th {
+      background: var(--gradient);
+      color: #fff;
+      padding: 14px 16px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .price-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      background: var(--bg-card);
+    }
+
+    .price-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .price-highlight {
+      color: var(--accent) !important;
+      font-weight: 700;
+    }
+
+    /* Steps */
+    .steps {
+      counter-reset: step;
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .steps li {
+      counter-increment: step;
+      position: relative;
+      padding-left: 56px;
+      margin-bottom: 24px;
+      min-height: 40px;
+    }
+
+    .steps li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 40px;
+      height: 40px;
+      background: var(--gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1rem;
+      color: #fff;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      text-align: center;
+      padding: 60px 0;
+      position: relative;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(167, 139, 250, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-section h2 {
+      border: none;
+      padding: 0;
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+    }
+
+    .cta-section p {
+      font-size: 1.05rem;
+      margin-bottom: 24px;
+    }
+
+    .btn-lg {
+      padding: 16px 48px;
+      font-size: 1.1rem;
+    }
+
+    /* Badge */
+    .badge {
+      display: inline-block;
+      background: rgba(167, 139, 250, 0.12);
+      color: var(--accent);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-right: 8px;
+      margin-bottom: 8px;
+    }
+
+    .badge-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0 30px;
+      margin-top: 20px;
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .footer-nav a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .footer-nav a:hover {
+      color: var(--accent);
+    }
+
+    .footer-info {
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      line-height: 1.8;
+    }
+
+    .footer-info strong {
+      color: var(--accent);
+    }
+
+    /* Inline link style */
+    a.inline-link {
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.2s;
+    }
+
+    a.inline-link:hover {
+      color: var(--accent-dark);
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      h1 { font-size: 1.6rem; }
+      section h2 { font-size: 1.3rem; }
+      .card { padding: 20px; }
+      .price-table { font-size: 0.85rem; }
+      .price-table th, .price-table td { padding: 10px 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <header>
+    <div class="logo">🎨</div>
+    <h1>AI绘画API 国内使用指南：Midjourney / DALL-E / Stable Diffusion 中转方案</h1>
+    <p class="subtitle">2026年最新AI绘画API国内接入方案，无需海外信用卡，支持支付宝/微信支付，比官方价格低50%</p>
+    <div class="hero-cta">
+      <a href="https://shop.xuedingtoken1.com/?invite=U8MP9YYJ" class="btn-primary" rel="nofollow">立即获取 API Key →</a>
+    </div>
+  </header>
+
+  <!-- 什么是AI绘画API -->
+  <section>
+    <h2>什么是AI绘画API？</h2>
+    <p>AI绘画API是一组程序化接口，允许开发者或应用直接调用Midjourney、DALL-E、Stable Diffusion等主流AI绘画模型，将文字描述自动转化为高质量图像。通过对接<strong>AI绘画API</strong>，你可以将AI绘画能力集成到自己的产品、网站或工作流中，实现批量生成、自动化创作。</p>
+
+    <div class="badge-group">
+      <span class="badge">Midjourney API</span>
+      <span class="badge">DALL-E 3 API</span>
+      <span class="badge">Stable Diffusion API</span>
+      <span class="badge">Flux API</span>
+      <span class="badge">Ideogram API</span>
+      <span class="badge">SDXL API</span>
+    </div>
+  </section>
+
+  <!-- 为什么国内用不了 -->
+  <section>
+    <h2>为什么国内无法直接使用AI绘画API？</h2>
+    <p>很多开发者搜索「<strong>Midjourney API 国内怎么用</strong>」，根源在于以下几个壁垒：</p>
+
+    <div class="card">
+      <h3>🚫 地域限制</h3>
+      <p>Midjourney、OpenAI DALL-E 等官方API服务不面向中国大陆用户开放，直接访问会被拦截或需要海外IP。</p>
+    </div>
+
+    <div class="card">
+      <h3>💳 支付障碍</h3>
+      <p>官方平台仅接受Visa/Mastercard等外币信用卡，不支持支付宝、微信支付。即使有海外卡，汇率和手续费也推高成本。</p>
+    </div>
+
+    <div class="card">
+      <h3>📉 高昂价格</h3>
+      <p>Midjourney标准订阅每月$30起步，DALL-E 3按张计费$0.04-0.12/张，Stable Diffusion官方API按信用额度收费。对于高频使用场景，成本急剧上升。</p>
+    </div>
+
+    <div class="card">
+      <h3>🔧 技术门槛</h3>
+      <p>不同平台API格式各异，接入和维护成本高。需要一个统一接口来简化对接流程。</p>
+    </div>
+  </section>
+
+  <!-- 中转代理方案 -->
+  <section>
+    <h2>AI绘画API中转代理——最优解决方案</h2>
+    <p>通过 <strong>Token中转代理</strong> 服务，你可以一站式接入所有主流AI绘画模型，无需担心地域限制、支付方式和技术兼容性问题。这就是最实用的 <strong>DALL-E API 代理</strong> 和 <strong>AI绘画接口</strong> 中转方案。</p>
+
+    <div class="card">
+      <h3>✅ 核心优势</h3>
+      <ul>
+        <li><strong>全模型覆盖</strong>：Midjourney、DALL-E 3、Stable Diffusion、Flux、Ideogram 等一站式接入</li>
+        <li><strong>统一API格式</strong>：OpenAI兼容接口，一次对接，所有模型通用</li>
+        <li><strong>无需海外环境</strong>：国内直连，低延迟访问</li>
+        <li><strong>支付宝/微信支付</strong>：直接用人民币结算，省去换汇烦恼</li>
+        <li><strong>价格优惠</strong>：比官方价格低50%，量大更优惠</li>
+        <li><strong>高性能</strong>：GPU集群加速，生成速度比自建快3-5倍</li>
+        <li><strong>7×24技术支持</strong>：微信群实时响应，快速解决问题</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 价格对比 -->
+  <section>
+    <h2>AI绘画API价格对比</h2>
+    <p>以下为部分主流模型的价格对比（以生成一张1024×1024图片为例）：</p>
+
+    <table class="price-table">
+      <thead>
+        <tr>
+          <th>模型</th>
+          <th>官方价格</th>
+          <th>Token代理价格</th>
+          <th>节省</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Midjourney v6.1</td>
+          <td>$0.05/张</td>
+          <td class="price-highlight">¥0.18/张</td>
+          <td class="price-highlight">~50%</td>
+        </tr>
+        <tr>
+          <td>DALL-E 3</td>
+          <td>$0.04-0.12/张</td>
+          <td class="price-highlight">¥0.15/张</td>
+          <td class="price-highlight">~55%</td>
+        </tr>
+        <tr>
+          <td>Stable Diffusion 3</td>
+          <td>$0.02/张</td>
+          <td class="price-highlight">¥0.06/张</td>
+          <td class="price-highlight">~55%</td>
+        </tr>
+        <tr>
+          <td>Flux Pro</td>
+          <td>$0.05/张</td>
+          <td class="price-highlight">¥0.20/张</td>
+          <td class="price-highlight">~45%</td>
+        </tr>
+        <tr>
+          <td>Ideogram</td>
+          <td>$0.04/张</td>
+          <td class="price-highlight">¥0.14/张</td>
+          <td class="price-highlight">~50%</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="font-size: 0.85rem; color: var(--text-secondary);">* 价格可能随官方调整而变动，以实际购买页面为准。代理价格为参考值，量大还有阶梯折扣。</p>
+  </section>
+
+  <!-- 接入教程 -->
+  <section>
+    <h2>AI绘画接口接入教程（5分钟完成）</h2>
+    <ol class="steps">
+      <li>
+        <strong>注册获取 API Key</strong>
+        <p>访问 <a href="https://shop.xuedingtoken1.com/?invite=U8MP9YYJ" class="inline-link" rel="nofollow">Token代理平台</a>，注册账号后在控制台获取专属API Key。</p>
+      </li>
+      <li>
+        <strong>选择模型并充值</strong>
+        <p>在平台内选择需要的AI绘画模型，支持支付宝/微信扫码充值。最低充值¥10即可开始使用。</p>
+      </li>
+      <li>
+        <strong>配置API端点</strong>
+        <p>将API请求的Base URL替换为代理地址，使用标准OpenAI格式即可调用所有模型。</p>
+        <p><code style="background:rgba(167,139,250,0.1);color:var(--accent);padding:2px 8px;border-radius:4px;">https://api.xuedingtoken.com/v1</code></p>
+      </li>
+      <li>
+        <strong>发送绘画请求</strong>
+        <p>使用标准API调用格式发送请求，几秒内即可获得生成的图片URL。</p>
+      </li>
+      <li>
+        <strong>集成到你的产品</strong>
+        <p>将AI绘画能力嵌入你的网站、小程序或App中，为用户提供AI创作体验。</p>
+      </li>
+    </ol>
+
+    <div class="card" style="margin-top: 20px;">
+      <h3>📋 API调用示例</h3>
+      <pre style="background: #0d0d1a; color: #e2e8f0; padding: 20px; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.6;"><code>curl https://api.xuedingtoken.com/v1/images/generations \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d '{
+    "model": "midjourney-v6",
+    "prompt": "A futuristic cyberpunk city at night, neon lights, rain, 4k",
+    "n": 1,
+    "size": "1024x1024"
+  }'</code></pre>
+    </div>
+  </section>
+
+  <!-- 适用场景 -->
+  <section>
+    <h2>AI绘画API的典型应用场景</h2>
+    <div class="card">
+      <h3>🎮 游戏开发</h3>
+      <p>批量生成游戏角色、场景、道具素材，大幅降低美术外包成本。</p>
+    </div>
+    <div class="card">
+      <h3>📱 小程序/App</h3>
+      <p>在应用中嵌入AI绘画功能，为用户提供头像生成、AI写真等增值服务。</p>
+    </div>
+    <div class="card">
+      <h3>🛒 电商设计</h3>
+      <p>自动生成商品场景图、模特图、Banner，实现电商视觉素材的自动化生产。</p>
+    </div>
+    <div class="card">
+      <h3>📰 内容创作</h3>
+      <p>为自媒体、公众号、小红书批量生成配图和封面，提升内容生产效率。</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <h2>常见问题</h2>
+    <div class="card">
+      <h3>Q: 代理和官方API在画质上有区别吗？</h3>
+      <p>没有区别。代理直接调用官方模型，生成质量与官方完全一致。</p>
+    </div>
+    <div class="card">
+      <h3>Q: 数据安全和版权怎么保障？</h3>
+      <p>我们对传输过程加密，不存储生成的图片。图片版权归调用方所有。</p>
+    </div>
+    <div class="card">
+      <h3>Q: 支持高并发吗？</h3>
+      <p>支持。我们的GPU集群具备弹性扩容能力，可支持数千QPS的并发请求。</p>
+    </div>
+    <div class="card">
+      <h3>Q: 如何获取技术支持？</h3>
+      <p>添加微信 <strong>Ya559890</strong>，进入技术支持群，7×24小时响应。</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2>准备好开始使用AI绘画API了吗？</h2>
+    <p>注册即赠体验额度，最快5分钟完成接入，开启你的AI创作之旅。</p>
+    <a href="https://shop.xuedingtoken1.com/?invite=U8MP9YYJ" class="btn-primary btn-lg" rel="nofollow">立即注册，免费体验 →</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-nav">
+      <a href="index.html">← 返回主页</a>
+      <a href="ai-image-api.html">AI绘画API</a>
+      <a href="enterprise-api.html">企业API采购</a>
+      <a href="https://shop.xuedingtoken1.com/?invite=U8MP9YYJ" rel="nofollow">注册/购买</a>
+    </div>
+    <div class="footer-info">
+      <p>联系微信：<strong>Ya559890</strong></p>
+      <p>© 2026 Token代理 · 专业AI API中转服务</p>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>
