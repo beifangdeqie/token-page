@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude_API国内怎么调用_Claude3.5_Sonnet接入教程_2026</title>
+<meta name="description" content="国内开发者如何调用Claude 3.5 Sonnet API？完整教程：从注册到代码接入，无需翻墙，人民币付款，兼容Anthropic官方SDK。">
+<meta name="keywords" content="Claude API,Claude 3.5 Sonnet,Anthropic API,国内调用Claude,Claude API接入,Claude中转">
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;max-width:800px;margin:0 auto;padding:20px;line-height:1.8;color:#333;background:#f8f9fa}
+h1{color:#d97706;border-bottom:2px solid #d97706;padding-bottom:10px}
+h2{color:#1a1a1a;margin-top:30px}
+.cta{background:linear-gradient(135deg,#d97706,#b45309);color:white;padding:20px;border-radius:12px;text-align:center;margin:30px 0}
+.cta a{color:white;font-size:1.2em;font-weight:bold;text-decoration:none;border:2px solid white;padding:10px 30px;border-radius:8px;display:inline-block}
+.cta a:hover{background:rgba(255,255,255,0.2)}
+pre{background:#272822;color:#f8f8f2;padding:15px;border-radius:8px;overflow-x:auto}
+.highlight{background:#fffbeb;padding:15px;border-radius:8px;border-left:4px solid #d97706;margin:15px 0}
+</style>
+</head>
+<body>
+<h1>Claude 3.5 Sonnet API 国内调用教程</h1>
+<p>Claude 3.5 Sonnet是Anthropic最强的编程和长文本模型。国内怎么接入？本文给你完整方案。</p>
+
+<h2>Claude 3.5 Sonnet 强在哪？</h2>
+<ul>
+<li>🧠 200K超长上下文（能读完整本书）</li>
+<li>💻 代码能力业界顶级</li>
+<li>📝 长文写作质量最高</li>
+<li>⚡ 响应速度快</li>
+<li>🎯 指令遵循能力极强</li>
+</ul>
+
+<h2>国内接入方案</h2>
+<div class="highlight">
+<strong>推荐方案：API聚合平台</strong>
+<p>不需要海外手机号、不需要外币信用卡、不需要翻墙。人民币充值，一个Key调用Claude + GPT + Gemini等所有模型。</p>
+</div>
+
+<div class="cta">
+<p><strong>👉 AI模型API聚合服务 - 一键调用Claude 3.5</strong></p>
+<a href="https://beifangdeqie.github.io/token-page/shuyan.html">了解详情 →</a>
+</div>
+
+<h2>代码接入</h2>
+<pre><code>import openai
+
+# 使用聚合API调用Claude
+client = openai.OpenAI(
+    api_key="your-api-key",
+    base_url="https://api.example.com/v1"
+)
+
+# 调用Claude 3.5 Sonnet
+response = client.chat.completions.create(
+    model="claude-3-5-sonnet-20241022",
+    messages=[
+        {"role": "system", "content": "你是一个资深Python开发者"},
+        {"role": "user", "content": "帮我写一个Flask REST API"}
+    ],
+    max_tokens=4096
+)
+
+print(response.choices[0].message.content)</code></pre>
+
+<h2>Claude vs GPT-4o 怎么选？</h2>
+<table style="width:100%;border-collapse:collapse">
+<tr style="background:#d97706;color:white"><th style="padding:8px">场景</th><th style="padding:8px">推荐</th></tr>
+<tr style="border-bottom:1px solid #ddd"><td style="padding:8px">代码开发/调试</td><td style="padding:8px">Claude 3.5</td></tr>
+<tr style="border-bottom:1px solid #ddd"><td style="padding:8px">长文档分析</td><td style="padding:8px">Claude 3.5（200K上下文）</td></tr>
+<tr style="border-bottom:1px solid #ddd"><td style="padding:8px">多模态（图片）</td><td style="padding:8px">GPT-4o</td></tr>
+<tr style="border-bottom:1px solid #ddd"><td style="padding:8px">通用对话</td><td style="padding:8px">都可以</td></tr>
+<tr><td style="padding:8px">中文写作</td><td style="padding:8px">都可以</td></tr>
+</table>
+
+<div class="cta">
+<p><strong>一个Key同时调用Claude和GPT</strong></p>
+<a href="https://beifangdeqie.github.io/token-page/shuyan.html">立即了解 →</a>
+</div>
+
+<p style="text-align:center;color:#999;font-size:0.8em">© 2026 Claude API Guide China | <a href="https://github.com/beifangdeqie/ai-api-guide">GitHub</a></p>
+</body>
+</html>
