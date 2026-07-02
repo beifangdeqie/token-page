@@ -1,8 +1,6 @@
-Sitemap: https://beifangdeqie.github.io/token-page/sitemap.xml
-
 User-agent: *
 Allow: /
-Disallow: /.workbuddy/
+Sitemap: https://beifangdeqie.github.io/token-page/sitemap.xml
 
-# RSS Feed
-Feed: https://beifangdeqie.github.io/token-page/rss.xml
+# 鼓励搜索引擎收录
+Crawl-delay: 0
