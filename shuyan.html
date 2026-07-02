@@ -1,0 +1,1400 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数眼智能代理合作 - 大模型 API 服务</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --bg-dark: #0a0a1a;
+            --bg-card: rgba(255, 255, 255, 0.05);
+            --bg-card-hover: rgba(255, 255, 255, 0.1);
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b0;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --glow-primary: rgba(102, 126, 234, 0.5);
+            --glow-secondary: rgba(118, 75, 162, 0.5);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 50%, rgba(118, 75, 162, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 100%, rgba(79, 172, 254, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-badge span {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff 0%, #a0a0b0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero h1 .highlight {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--primary-gradient);
+            color: white;
+            box-shadow: 0 8px 30px var(--glow-primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px var(--glow-primary);
+        }
+
+        .btn-secondary {
+            background: var(--bg-card);
+            color: white;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-card-hover);
+            transform: translateY(-3px);
+        }
+
+        .btn-large {
+            padding: 18px 40px;
+            font-size: 1.1rem;
+        }
+
+        .hero-links {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .hero-links a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .card:hover {
+            background: var(--bg-card-hover);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+            background: var(--primary-gradient);
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Feature List */
+        .feature-list {
+            display: grid;
+            gap: 16px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 20px;
+            background: var(--bg-card);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            background: var(--accent-gradient);
+            flex-shrink: 0;
+        }
+
+        .feature-content h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .feature-content p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Pricing Cards */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .pricing-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-gradient);
+        }
+
+        .pricing-card.featured {
+            border-color: #667eea;
+            transform: scale(1.02);
+        }
+
+        .pricing-card.featured::before {
+            height: 5px;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(102, 126, 234, 0.2);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.02) translateY(-8px);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: var(--secondary-gradient);
+            color: white;
+            padding: 6px 40px;
+            font-size: 12px;
+            font-weight: 600;
+            transform: rotate(45deg);
+        }
+
+        .pricing-level {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .pricing-rate {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .pricing-label {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+        }
+
+        .pricing-features {
+            text-align: left;
+            list-style: none;
+        }
+
+        .pricing-features li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: #4facfe;
+            font-weight: bold;
+        }
+
+        /* Calculation Example */
+        .calculation-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 50px;
+            margin-top: 50px;
+        }
+
+        .calculation-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .calculation-title h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .calculation-title p {
+            color: var(--text-secondary);
+        }
+
+        .calculation-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .calc-step {
+            text-align: center;
+            padding: 25px;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 16px;
+        }
+
+        .calc-step-number {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin: 0 auto 15px;
+        }
+
+        .calc-step h4 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .calc-step p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .calc-formula {
+            margin-top: 40px;
+            padding: 30px;
+            background: rgba(79, 172, 254, 0.1);
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .calc-formula h4 {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: #4facfe;
+        }
+
+        .calc-formula .formula-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .formula-item {
+            background: var(--bg-card);
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-size: 0.95rem;
+        }
+
+        .formula-item strong {
+            color: #4facfe;
+        }
+
+        /* Customer Types */
+        .customer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+
+        .customer-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .customer-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(102, 126, 234, 0.5);
+        }
+
+        .customer-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            background: var(--primary-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            margin: 0 auto 20px;
+        }
+
+        .customer-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .customer-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* SOP Steps */
+        .sop-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .sop-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex: 1;
+            min-width: 120px;
+            max-width: 150px;
+        }
+
+        .sop-number {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            box-shadow: 0 8px 25px var(--glow-primary);
+        }
+
+        .sop-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .sop-arrow {
+            display: flex;
+            align-items: center;
+            color: rgba(102, 126, 234, 0.5);
+            font-size: 1.5rem;
+            align-self: center;
+        }
+
+        /* Agent Types */
+        .agent-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .agent-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 35px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .agent-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: var(--primary-gradient);
+            opacity: 0.1;
+            border-radius: 0 0 0 100%;
+        }
+
+        .agent-tag {
+            display: inline-block;
+            padding: 6px 16px;
+            background: var(--primary-gradient);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .agent-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .agent-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 24px 30px;
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.05rem;
+            font-weight: 600;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: inherit;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+
+        .faq-answer-content {
+            padding: 0 30px 24px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Compliance Section */
+        .compliance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+        }
+
+        .compliance-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 25px;
+        }
+
+        .compliance-card h4 {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #f5576c;
+        }
+
+        .compliance-card.positive h4 {
+            color: #4facfe;
+        }
+
+        .compliance-list {
+            list-style: none;
+        }
+
+        .compliance-list li {
+            padding: 10px 0;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .compliance-list li:last-child {
+            border-bottom: none;
+        }
+
+        .compliance-list li::before {
+            content: '✕';
+            color: #f5576c;
+            font-weight: bold;
+        }
+
+        .compliance-card.positive .compliance-list li::before {
+            content: '✓';
+            color: #4facfe;
+        }
+
+        /* Summary Section */
+        .summary-section {
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .summary-box {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 30px;
+            padding: 60px 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .summary-quote {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+
+        .summary-quote span {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .summary-points {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .summary-point {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background: var(--bg-card);
+            border-radius: 50px;
+            font-size: 0.95rem;
+        }
+
+        .summary-point-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--accent-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 0;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .footer-contact {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .footer-contact strong {
+            color: var(--text-primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 20px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            .cards-grid,
+            .pricing-grid,
+            .customer-grid,
+            .agent-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.featured {
+                transform: none;
+            }
+
+            .pricing-card.featured:hover {
+                transform: translateY(-8px);
+            }
+
+            .sop-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .sop-arrow {
+                transform: rotate(90deg);
+            }
+
+            .sop-step {
+                max-width: 200px;
+            }
+
+            .calculation-section {
+                padding: 30px 20px;
+            }
+
+            .calc-formula .formula-row {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .summary-quote {
+                font-size: 1.3rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Scroll Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                🧠 大模型 API 服务平台 | <span>代理合作计划</span>
+            </div>
+            <h1>数眼智能<span class="highlight">代理合作</span></h1>
+            <p class="hero-description">
+                专注于大模型 API 服务的平台，为企业提供稳定、低成本、便捷的一站式大模型 API 调用服务。让代理通过推广客户使用数眼智能 API 服务，获得长期、持续、可复利的收益。
+            </p>
+            <div class="hero-buttons">
+                <a href="https://www.dataeyes.ai/?promoter_code=usnqtrc3" class="btn btn-primary btn-large" target="_blank">
+                    🌐 海外平台注册
+                </a>
+                <a href="https://www.shuyanai.com/?promoter_code=8btjh5k3" class="btn btn-secondary btn-large" target="_blank">
+                    🇨🇳 国内平台注册
+                </a>
+            </div>
+            <div class="hero-links">
+                <a href="https://gcnhedtrx4k8.feishu.cn/wiki/GPCAwCCsFiUxmhkims9c78Dfn4f" target="_blank">
+                    📖 了解更多代理合作完整方案 →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>关于数眼智能</h2>
+                <p>稳定、低成本、便捷的一站式大模型 API 调用服务</p>
+            </div>
+            <div class="cards-grid">
+                <div class="card fade-in">
+                    <div class="card-icon">🌐</div>
+                    <h3>多模型支持</h3>
+                    <p>支持 DeepSeek、Qwen、GLM、Doubao、Kimi 等主流大模型接入，满足不同业务场景需求</p>
+                </div>
+                <div class="card fade-in">
+                    <div class="card-icon">💡</div>
+                    <h3>广泛应用场景</h3>
+                    <p>适用于 AI 聊天、智能客服、内容生成、图片生成、知识库问答、工作流自动化、AI 应用开发等场景</p>
+                </div>
+                <div class="card fade-in">
+                    <div class="card-icon">🔧</div>
+                    <h3>平台全程服务</h3>
+                    <p>平台负责产品、接口、技术、运维和售后，代理主要负责客户推广、资源对接和关系维护</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Agent Positioning -->
+    <section id="positioning">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>代理合作定位</h2>
+                <p>不是一次性销售，而是长期持续收益</p>
+            </div>
+            <div class="feature-list">
+                <div class="feature-item fade-in">
+                    <div class="feature-icon">♻️</div>
+                    <div class="feature-content">
+                        <h4>客户持续调用</h4>
+                        <p>客户一旦接入项目，后续通常会持续调用 API 服务</p>
+                    </div>
+                </div>
+                <div class="feature-item fade-in">
+                    <div class="feature-icon">📈</div>
+                    <div class="feature-content">
+                        <h4>消耗持续增长</h4>
+                        <p>客户业务量越大，API 消耗越高，代理收益越多</p>
+                    </div>
+                </div>
+                <div class="feature-item fade-in">
+                    <div class="feature-icon">🔗</div>
+                    <div class="feature-content">
+                        <h4>平台粘性强</h4>
+                        <p>客户模型需求越多，平台粘性越强，关系越稳定</p>
+                    </div>
+                </div>
+                <div class="feature-item fade-in">
+                    <div class="feature-icon">💰</div>
+                    <div class="feature-content">
+                        <h4>持续分润空间</h4>
+                        <p>代理前期获客成功后，后续有持续分润空间</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Agent Types -->
+    <section id="agent-types">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>适合成为代理的人群</h2>
+                <p>无论你是技术背景还是非技术背景，都能参与</p>
+            </div>
+            <div class="agent-grid">
+                <div class="agent-card fade-in">
+                    <span class="agent-tag">🌱 小白代理</span>
+                    <h3>AI 初学者</h3>
+                    <p>刚接触 AI、不懂技术，但愿意学习和推广的人。数眼智能提供全程技术支持，你只需专注客户开发。</p>
+                </div>
+                <div class="agent-card fade-in">
+                    <span class="agent-tag">🤝 渠道型代理</span>
+                    <h3>资源拥有者</h3>
+                    <p>有客户资源、企业资源、开发者资源的人或团队，包括企业服务商、SaaS服务商、软件销售团队、系统集成商、教育培训机构、AI社群主等。</p>
+                </div>
+                <div class="agent-card fade-in">
+                    <span class="agent-tag">💻 技术型代理</span>
+                    <h3>开发者团队</h3>
+                    <p>懂 API、会开发、能为客户做简单接入的人，包括程序员、独立开发者、AI应用开发团队、外包开发团队等。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Types -->
+    <section id="customers">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>目标客户画像</h2>
+                <p>精准定位有 大模型 API 调用需求的客户</p>
+            </div>
+            <div class="customer-grid">
+                <div class="customer-card fade-in">
+                    <div class="customer-icon">🤖</div>
+                    <h3>AI 工具团队</h3>
+                    <p>AI写作、绘画、聊天、智能体、自动化工具等团队</p>
+                </div>
+                <div class="customer-card fade-in">
+                    <div class="customer-icon">🏢</div>
+                    <h3>企业客户</h3>
+                    <p>电商、跨境电商、教育培训、内容营销、客服团队、科研机构等</p>
+                </div>
+                <div class="customer-card fade-in">
+                    <div class="customer-icon">👨‍💻</div>
+                    <h3>开发者/独立站长</h3>
+                    <p>AI小程序、插件、机器人、知识库、RAG应用开发者</p>
+                </div>
+                <div class="customer-card fade-in">
+                    <div class="customer-icon">🚀</div>
+                    <h3>软件 / SaaS 公司</h3>
+                    <p>想给产品加 AI 能力的软件公司和 SaaS 服务商</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Rules Section -->
+    <section id="rules">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>核心规则</h2>
+                <p>透明清晰的合作机制</p>
+            </div>
+            <div class="cards-grid">
+                <div class="card fade-in">
+                    <div class="card-icon">🔗</div>
+                    <h3>客户绑定规则</h3>
+                    <p>客户通过代理邀请链接注册后，自动绑定到代理名下。绑定关系长期有效，后续客户消费都会计入该代理业绩。</p>
+                </div>
+                <div class="card fade-in">
+                    <div class="card-icon">📅</div>
+                    <h3>佣金结算规则</h3>
+                    <p>代理佣金按月结算。平台每月根据代理后台统计数据，核算代理名下客户产生的有效消费、利润金额和对应分润金额。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Channels Section -->
+    <section id="channels">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>获客渠道</h2>
+                <p>多种渠道帮助代理快速获客</p>
+            </div>
+            <div class="cards-grid">
+                <div class="card fade-in">
+                    <div class="card-icon">👥</div>
+                    <h3>私域流量</h3>
+                    <p>朋友圈和微信群，直接触达潜在客户</p>
+                </div>
+                <div class="card fade-in">
+                    <div class="card-icon">📱</div>
+                    <h3>内容平台</h3>
+                    <p>抖音、小红书、视频号内容引流，吸引目标用户</p>
+                </div>
+                <div class="card fade-in">
+                    <div class="card-icon">💬</div>
+                    <h3>开发者社群</h3>
+                    <p>技术社区、CSDN、掘金等开发者聚集地</p>
+                </div>
+                <div class="card fade-in">
+                    <div class="card-icon">🤝</div>
+                    <h3>企业转介绍</h3>
+                    <p>企业客户转介绍，扩大客户资源池</p>
+                </div>
+                <div class="card fade-in">
+                    <div class="card-icon">🔄</div>
+                    <h3>老客户裂变</h3>
+                    <p>通过老客户口碑传播，实现自然裂变</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOP Section -->
+    <section id="sop">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>成交 SOP</h2>
+                <p>标准化的客户成交流程</p>
+            </div>
+            <div class="sop-container">
+                <div class="sop-step fade-in">
+                    <div class="sop-number">1</div>
+                    <div class="sop-title">发现客户</div>
+                </div>
+                <div class="sop-arrow">→</div>
+                <div class="sop-step fade-in">
+                    <div class="sop-number">2</div>
+                    <div class="sop-title">判断需求</div>
+                </div>
+                <div class="sop-arrow">→</div>
+                <div class="sop-step fade-in">
+                    <div class="sop-number">3</div>
+                    <div class="sop-title">介绍平台</div>
+                </div>
+                <div class="sop-arrow">→</div>
+                <div class="sop-step fade-in">
+                    <div class="sop-number">4</div>
+                    <div class="sop-title">引导测试</div>
+                </div>
+                <div class="sop-arrow">→</div>
+                <div class="sop-step fade-in">
+                    <div class="sop-number">5</div>
+                    <div class="sop-title">官方协助</div>
+                </div>
+                <div class="sop-arrow">→</div>
+                <div class="sop-step fade-in">
+                    <div class="sop-number">6</div>
+                    <div class="sop-title">促成充值</div>
+                </div>
+                <div class="sop-arrow">→</div>
+                <div class="sop-step fade-in">
+                    <div class="sop-number">7</div>
+                    <div class="sop-title">持续跟进</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>常见问题</h2>
+                <p>解答您最关心的问题</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item fade-in">
+                    <button class="faq-question">不懂技术可以做代理吗？</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            可以的。数眼智能提供全程技术支持，代理主要负责客户推广和关系维护，不需要自己搭建模型或处理技术问题。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">客户会不会被抢走？</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            不会。绑定关系长期有效，客户通过代理邀请链接注册后，后续消费都会计入该代理业绩。
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <button class="faq-question">什么时候结算佣金？</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            按月结算。平台每月根据代理后台统计数据，核算代理名下客户产生的有效消费、利润金额和对应分润金额。
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <button class="faq-question">客户技术问题谁处理？</button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            平台统一提供技术支持。代理只需负责客户开发和关系维护，技术问题由数眼智能平台处理。
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Compliance Section -->
+    <section id="compliance">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>代理宣传合规要求</h2>
+                <p>合规推广，维护良好市场环境</p>
+            </div>
+            <div class="compliance-grid">
+                <div class="compliance-card fade-in">
+                    <h4>⚠️ 禁止行为</h4>
+                    <ul class="compliance-list">
+                        <li>虚假宣传、承诺保底收益</li>
+                        <li>承诺稳赚不赔</li>
+                        <li>私自修改价格政策</li>
+                        <li>冒充官方</li>
+                        <li>攻击同行</li>
+                        <li>诱导违规使用</li>
+                        <li>泄露隐私</li>
+                    </ul>
+                </div>
+                <div class="compliance-card positive fade-in">
+                    <h4>✅ 推荐表达</h4>
+                    <ul class="compliance-list">
+                        <li>价格有优势</li>
+                        <li>支持多模型接入</li>
+                        <li>平台提供技术和售后支持</li>
+                        <li>稳定可靠的API服务</li>
+                        <li>简单易用的接入流程</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Summary Section -->
+    <section id="summary">
+        <div class="container">
+            <div class="summary-section fade-in">
+                <div class="summary-box">
+                    <div class="summary-quote">
+                        <span>你负责客户资源</span>，<br>我们负责平台与技术
+                    </div>
+                    <div class="summary-points">
+                        <div class="summary-point">
+                            <span class="summary-point-icon">💡</span>
+                            不用懂代码，也能参与
+                        </div>
+                        <div class="summary-point">
+                            <span class="summary-point-icon">🔄</span>
+                            客户持续调用
+                        </div>
+                        <div class="summary-point">
+                            <span class="summary-point-icon">📈</span>
+                            代理持续收益
+                        </div>
+                    </div>
+                    <div class="hero-buttons">
+                        <a href="https://www.dataeyes.ai/?promoter_code=usnqtrc3" class="btn btn-primary btn-large" target="_blank">
+                            🌐 海外平台注册
+                        </a>
+                        <a href="https://www.shuyanai.com/?promoter_code=8btjh5k3" class="btn btn-secondary btn-large" target="_blank">
+                            🇨🇳 国内平台注册
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="https://gcnhedtrx4k8.feishu.cn/wiki/GPCAwCCsFiUxmhkims9c78Dfn4f" target="_blank">
+                        📖 了解更多代理合作完整方案
+                    </a>
+                </div>
+                <div class="footer-contact">
+                    <p>微信号：<strong>Ya559890</strong></p>
+                </div>
+                <p style="color: var(--text-secondary); font-size: 0.85rem;">
+                    © 2026 数眼智能代理合作计划
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                const isActive = faqItem.classList.contains('active');
+                
+                // Close all FAQ items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Toggle current item
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+
+        // Scroll Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
