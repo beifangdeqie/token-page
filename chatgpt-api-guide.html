@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ChatGPT API接入指南_国内怎么调用GPT-4o_API聚合平台推荐</title>
+<meta name="description" content="2026年ChatGPT API接入完整指南，国内开发者如何调用GPT-4o/GPT-4 API，API聚合平台推荐，一个Key调用所有AI模型。">
+<meta name="keywords" content="ChatGPT API,GPT-4o API,OpenAI API接入,国内调用ChatGPT,API聚合,AI模型中转">
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;max-width:800px;margin:0 auto;padding:20px;line-height:1.8;color:#333;background:#f8f9fa}
+h1{color:#10a37f;border-bottom:2px solid #10a37f;padding-bottom:10px}
+h2{color:#1a1a1a;margin-top:30px}
+.cta{background:linear-gradient(135deg,#10a37f,#0d8a6a);color:white;padding:20px;border-radius:12px;text-align:center;margin:30px 0}
+.cta a{color:white;font-size:1.2em;font-weight:bold;text-decoration:none;border:2px solid white;padding:10px 30px;border-radius:8px;display:inline-block}
+.cta a:hover{background:rgba(255,255,255,0.2)}
+code{background:#272822;color:#f8f8f2;padding:2px 6px;border-radius:4px;font-size:0.9em}
+pre{background:#272822;color:#f8f8f2;padding:15px;border-radius:8px;overflow-x:auto}
+table{width:100%;border-collapse:collapse;margin:15px 0}
+th,td{border:1px solid #ddd;padding:10px;text-align:left}
+th{background:#10a37f;color:white}
+</style>
+</head>
+<body>
+<h1>ChatGPT API 接入完整指南（2026版）</h1>
+<p>国内开发者如何快速接入GPT-4o API？本文从注册、获取API Key到代码调用，手把手教你。</p>
+
+<h2>一、为什么选择GPT-4o？</h2>
+<ul>
+<li>综合能力最强的通用模型</li>
+<li>支持文本、图片、音频多模态</li>
+<li>128K上下文窗口</li>
+<li>响应速度快，性价比优秀</li>
+</ul>
+
+<h2>二、国内接入方案对比</h2>
+<table>
+<tr><th>方案</th><th>优点</th><th>缺点</th></tr>
+<tr><td>直接注册OpenAI</td><td>官方渠道</td><td>需要海外手机号、外币信用卡</td></tr>
+<tr><td>API聚合平台</td><td>无需翻墙、人民币付款</td><td>需选择靠谱平台</td></tr>
+<tr><td>自建中转</td><td>完全可控</td><td>技术门槛高、维护成本大</td></tr>
+</table>
+
+<h2>三、推荐方案：API聚合服务</h2>
+<p>对于大多数国内开发者，使用API聚合服务是最优解。一个API Key就能调用GPT-4o、Claude、Gemini等200+模型。</p>
+
+<div class="cta">
+<p><strong>👉 AI模型API聚合服务</strong></p>
+<p>一个账号调用GPT-4o / Claude / Gemini等200+模型</p>
+<a href="https://beifangdeqie.github.io/token-page/shuyan.html">立即了解详情 →</a>
+</div>
+
+<h2>四、代码接入示例</h2>
+<pre><code>import openai
+
+# 使用聚合API（兼容OpenAI官方格式）
+client = openai.OpenAI(
+    api_key="your-api-key",
+    base_url="https://api.example.com/v1"
+)
+
+# 调用GPT-4o
+response = client.chat.completions.create(
+    model="gpt-4o",
+    messages=[
+        {"role": "system", "content": "你是一个有帮助的助手"},
+        {"role": "user", "content": "帮我写一个Python爬虫"}
+    ],
+    temperature=0.7
+)
+
+print(response.choices[0].message.content)</code></pre>
+
+<h2>五、常见问题</h2>
+<h3>Q: API聚合平台稳定吗？</h3>
+<p>选择有口碑的平台，正规平台提供99.9%可用性SLA。</p>
+
+<h3>Q: 价格比官方贵吗？</h3>
+<p>正规聚合平台价格与官方持平甚至更低（批量采购优势）。</p>
+
+<h3>Q: 数据安全吗？</h3>
+<p>正规平台只做请求转发，不存储对话内容。</p>
+
+<div class="cta">
+<p><strong>开始使用AI API聚合服务</strong></p>
+<a href="https://beifangdeqie.github.io/token-page/shuyan.html">查看详情 →</a>
+</div>
+
+<p style="text-align:center;color:#999;font-size:0.8em">© 2026 AI API Guide | <a href="https://github.com/beifangdeqie/ai-api-guide">GitHub</a></p>
+</body>
+</html>
