@@ -3,1675 +3,349 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🧠 数眼智能 - Token代理合作方案</title>
+    <title>数眼智能 - Token代理合作方案</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #0a0a0f 100%);
-            color: #e0e0e0;
-            line-height: 1.7;
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+        
         /* Hero Section */
-        .hero {
-            padding: 100px 0 80px;
-            text-align: center;
-            background: radial-gradient(ellipse at center, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 20px;
-            letter-spacing: -1px;
-        }
-
-        .hero .subtitle {
-            font-size: 1.4rem;
-            color: #a0a0a0;
-            margin-bottom: 40px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 14px 28px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 30px rgba(102, 126, 234, 0.6);
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        /* Section Styling */
-        section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .section-title p {
-            color: #888;
-            font-size: 1.1rem;
-        }
-
-        /* Platform Cards */
-        .platform-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .platform-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 30px;
-            transition: all 0.3s ease;
-        }
-
-        .platform-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(102, 126, 234, 0.5);
-            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.2);
-        }
-
-        .platform-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            color: white;
-        }
-
-        .platform-card .tag {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            margin-bottom: 15px;
-        }
-
-        .tag-global {
-            background: rgba(59, 130, 246, 0.2);
-            color: #60a5fa;
-        }
-
-        .tag-domestic {
-            background: rgba(239, 68, 68, 0.2);
-            color: #f87171;
-        }
-
-        .platform-card ul {
-            list-style: none;
-            margin-bottom: 20px;
-        }
-
-        .platform-card li {
-            padding: 8px 0;
-            padding-left: 20px;
-            position: relative;
-            color: #b0b0b0;
-        }
-
-        .platform-card li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #667eea;
-        }
-
-        /* Steps Section */
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 20px;
-        }
-
-        @media (max-width: 992px) {
-            .steps-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .steps-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 480px) {
-            .steps-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .step-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 30px 20px;
-            text-align: center;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .step-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(102, 126, 234, 0.5);
-        }
-
-        .step-number {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0 auto 20px;
-            color: white;
-        }
-
-        .step-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 12px;
-            color: white;
-        }
-
-        .step-card p {
-            color: #888;
-            font-size: 0.95rem;
-        }
-
-        /* Guide Section */
-        .guide-section {
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 24px;
-            padding: 50px;
-            margin-top: 40px;
-        }
-
-        .guide-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-
-        .guide-item {
-            background: rgba(102, 126, 234, 0.1);
-            border: 1px solid rgba(102, 126, 234, 0.2);
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .guide-item h4 {
-            color: #667eea;
-            font-size: 1.2rem;
-            margin-bottom: 8px;
-        }
-
-        .guide-item p {
-            color: #888;
-            font-size: 0.9rem;
-        }
-
-        .copy-box {
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 20px;
-            margin-top: 30px;
-        }
-
-        .copy-box h4 {
-            color: white;
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-        }
-
-        .copy-box p {
-            color: #b0b0b0;
-            font-size: 0.95rem;
-            margin-bottom: 12px;
-        }
-
-        .copy-box ul {
-            list-style: none;
-        }
-
-        .copy-box li {
-            padding: 8px 0;
-            padding-left: 20px;
-            position: relative;
-            color: #b0b0b0;
-        }
-
-        .copy-box li::before {
-            content: '•';
-            position: absolute;
-            left: 5px;
-            color: #667eea;
-        }
-
-        /* Features Grid */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .feature-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 30px;
-            display: flex;
-            gap: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-3px);
-            border-color: rgba(102, 126, 234, 0.3);
-        }
-
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            flex-shrink: 0;
-        }
-
-        .feature-content h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: white;
-        }
-
-        .feature-content p {
-            color: #888;
-            font-size: 0.95rem;
-        }
-
-        /* Talk Flow */
-        .talk-steps {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .talk-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 25px 30px;
-            display: flex;
-            gap: 25px;
-            align-items: flex-start;
-            transition: all 0.3s ease;
-        }
-
-        .talk-card:hover {
-            border-color: rgba(102, 126, 234, 0.3);
-        }
-
-        .talk-number {
-            width: 45px;
-            height: 45px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: white;
-            flex-shrink: 0;
-        }
-
-        .talk-content h3 {
-            font-size: 1.15rem;
-            margin-bottom: 8px;
-            color: white;
-        }
-
-        .talk-content p {
-            color: #b0b0b0;
-            font-size: 0.95rem;
-            font-style: italic;
-        }
-
-        /* Customer Flow */
-        .flow-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 40px;
-        }
-
-        .flow-step {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 25px 30px;
-            text-align: center;
-            min-width: 180px;
-            transition: all 0.3s ease;
-        }
-
-        .flow-step:hover {
-            border-color: rgba(102, 126, 234, 0.5);
-            transform: translateY(-3px);
-        }
-
-        .flow-step .step-icon {
-            font-size: 2rem;
-            margin-bottom: 12px;
-        }
-
-        .flow-step h4 {
-            font-size: 1.1rem;
-            color: white;
-            margin-bottom: 6px;
-        }
-
-        .flow-step p {
-            color: #888;
-            font-size: 0.85rem;
-        }
-
-        .flow-arrow {
-            font-size: 1.5rem;
-            color: #667eea;
-        }
-
-        /* Commission Section */
-        .commission-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
-
-        .commission-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 30px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .commission-card:hover {
-            transform: translateY(-3px);
-            border-color: rgba(102, 126, 234, 0.3);
-        }
-
-        .commission-card .value {
-            font-size: 3rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 10px;
-        }
-
-        .commission-card h3 {
-            font-size: 1.2rem;
-            color: white;
-            margin-bottom: 8px;
-        }
-
-        .commission-card p {
-            color: #888;
-            font-size: 0.95rem;
-        }
-
-        /* FAQ Section */
-        .faq-list {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            margin-bottom: 15px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .faq-item:hover {
-            border-color: rgba(102, 126, 234, 0.3);
-        }
-
-        .faq-question {
-            padding: 20px 25px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 600;
-            color: white;
-        }
-
-        .faq-question::after {
-            content: '+';
-            font-size: 1.5rem;
-            color: #667eea;
-            transition: transform 0.3s ease;
-        }
-
-        .faq-item.active .faq-question::after {
-            transform: rotate(45deg);
-        }
-
-        .faq-answer {
-            padding: 0 25px;
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .faq-item.active .faq-answer {
-            padding: 0 25px 20px;
-            max-height: 500px;
-        }
-
-        .faq-answer p {
-            color: #b0b0b0;
-            line-height: 1.8;
-        }
-
-        /* Contact Section */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
-
-        .contact-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 30px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .contact-card:hover {
-            transform: translateY(-3px);
-            border-color: rgba(102, 126, 234, 0.3);
-        }
-
-        .contact-card .icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-
-        .contact-card h3 {
-            font-size: 1.2rem;
-            color: white;
-            margin-bottom: 10px;
-        }
-
-        .contact-card p {
-            color: #888;
-            font-size: 0.95rem;
-        }
-
-        .contact-card a {
-            color: #667eea;
-            text-decoration: none;
-            word-break: break-all;
-        }
-
-        .contact-card a:hover {
-            text-decoration: underline;
-        }
-
-        /* Resources Section */
-        .resources-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
-
-        .resource-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 30px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .resource-card:hover {
-            transform: translateY(-3px);
-            border-color: rgba(102, 126, 234, 0.5);
-            background: rgba(102, 126, 234, 0.1);
-        }
-
-        .resource-card .icon {
-            font-size: 2rem;
-            margin-bottom: 15px;
-        }
-
-        .resource-card h3 {
-            font-size: 1.15rem;
-            color: white;
-            margin-bottom: 8px;
-        }
-
-        .resource-card p {
-            color: #888;
-            font-size: 0.9rem;
-        }
-
+        .hero { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 80px 20px; text-align: center; }
+        .hero h1 { font-size: 2.5em; margin-bottom: 15px; }
+        .hero p { font-size: 1.2em; opacity: 0.95; max-width: 600px; margin: 0 auto 30px; }
+        .hero-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 20px; }
+        .hero-tags span { background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 0.9em; }
+        
+        /* CTA Buttons */
+        .cta-group { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 30px; }
+        .cta-btn { padding: 15px 30px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1.1em; transition: transform 0.2s, box-shadow 0.2s; display: inline-block; }
+        .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
+        .cta-primary { background: #fff; color: #667eea; }
+        .cta-secondary { background: rgba(255,255,255,0.15); color: white; border: 2px solid white; }
+        
+        /* Container */
+        .container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
+        
+        /* Section Title */
+        .section-title { text-align: center; margin-bottom: 50px; }
+        .section-title h2 { font-size: 2em; color: #333; margin-bottom: 10px; }
+        .section-title p { color: #666; font-size: 1.1em; }
+        
+        /* What You Do Section */
+        .what-you-do { background: #f8f9fa; }
+        .role-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .role-card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .role-card .icon { font-size: 2.5em; margin-bottom: 15px; }
+        .role-card h3 { font-size: 1.3em; margin-bottom: 10px; color: #333; }
+        .role-card p { color: #666; }
+        
+        /* Benefits */
+        .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
+        .benefit-item { text-align: center; padding: 25px; }
+        .benefit-item .icon { font-size: 2.5em; margin-bottom: 15px; }
+        .benefit-item h3 { font-size: 1.2em; margin-bottom: 10px; color: #333; }
+        .benefit-item p { color: #666; font-size: 0.95em; }
+        
+        /* How It Works */
+        .how-it-works { background: #f8f9fa; }
+        .steps { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
+        .step { text-align: center; max-width: 200px; }
+        .step-number { width: 50px; height: 50px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3em; font-weight: 700; margin: 0 auto 15px; }
+        .step h4 { font-size: 1.1em; margin-bottom: 8px; }
+        .step p { color: #666; font-size: 0.9em; }
+        
+        /* Platforms */
+        .platforms { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .platform-card { border: 2px solid #e0e0e0; border-radius: 16px; overflow: hidden; transition: border-color 0.3s, box-shadow 0.3s; }
+        .platform-card:hover { border-color: #667eea; box-shadow: 0 8px 30px rgba(102, 126, 234, 0.15); }
+        .platform-header { padding: 25px; text-align: center; }
+        .platform-header.international { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+        .platform-header.domestic { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; }
+        .platform-header h3 { font-size: 1.5em; margin-bottom: 5px; }
+        .platform-header .domain { opacity: 0.9; font-size: 1em; }
+        .platform-body { padding: 25px; }
+        .platform-body ul { list-style: none; }
+        .platform-body li { padding: 8px 0; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; }
+        .platform-body li:before { content: "✓"; color: #667eea; font-weight: bold; margin-right: 10px; }
+        .platform-body li:last-child { border-bottom: none; }
+        .platform-cta { text-align: center; padding: 20px 25px 25px; }
+        .platform-cta a { display: block; padding: 12px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; transition: opacity 0.3s; }
+        .platform-cta a:hover { opacity: 0.9; }
+        
+        /* FAQ */
+        .faq { background: #f8f9fa; }
+        .faq-list { max-width: 800px; margin: 0 auto; }
+        .faq-item { background: white; border-radius: 12px; margin-bottom: 15px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
+        .faq-question { padding: 20px 25px; font-weight: 600; font-size: 1.05em; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .faq-question:after { content: "+"; font-size: 1.5em; color: #667eea; transition: transform 0.3s; }
+        .faq-item.active .faq-question:after { transform: rotate(45deg); }
+        .faq-answer { padding: 0 25px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; color: #666; }
+        .faq-item.active .faq-answer { padding: 0 25px 20px; max-height: 500px; }
+        
+        /* Contact */
+        .contact { text-align: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+        .contact h2 { font-size: 2em; margin-bottom: 15px; }
+        .contact p { font-size: 1.1em; opacity: 0.9; margin-bottom: 30px; }
+        .contact-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+        .contact-link { background: rgba(255,255,255,0.15); padding: 15px 25px; border-radius: 10px; text-decoration: none; color: white; border: 1px solid rgba(255,255,255,0.3); transition: background 0.3s; }
+        .contact-link:hover { background: rgba(255,255,255,0.25); }
+        
         /* Footer */
-        footer {
-            text-align: center;
-            padding: 40px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 80px;
-        }
-
-        footer p {
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        /* Agent Section */
-        .agent-section {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-            border: 1px solid rgba(102, 126, 234, 0.2);
-            border-radius: 24px;
-            padding: 50px;
-            margin-top: 40px;
-        }
-
-        .agent-section h3 {
-            font-size: 1.5rem;
-            color: white;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        .agent-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .agent-item {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .agent-item .num {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #667eea;
-            margin-bottom: 8px;
-        }
-
-        .agent-item h4 {
-            color: white;
-            margin-bottom: 5px;
-        }
-
-        .agent-item p {
-            color: #888;
-            font-size: 0.85rem;
-        }
-
-        /* Responsive adjustments */
+        .footer { background: #1a1a2e; color: #aaa; padding: 30px 20px; text-align: center; font-size: 0.9em; }
+        .footer a { color: #667eea; text-decoration: none; }
+        
+        /* Responsive */
         @media (max-width: 768px) {
-            .showcase-card[style*="grid-column"] {
-                grid-column: span 1 !important;
-            }
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero .subtitle {
-                font-size: 1.1rem;
-            }
-
-            .section-title h2 {
-                font-size: 2rem;
-            }
-
-            .guide-section {
-                padding: 30px 20px;
-            }
-
-            .agent-section {
-                padding: 30px 20px;
-            }
-
-            .flow-container {
-                flex-direction: column;
-            }
-
-            .flow-arrow {
-                transform: rotate(90deg);
-            }
-        }
-
-        /* Model tags */
-        .model-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 15px;
-        }
-
-        .model-tag {
-            background: rgba(102, 126, 234, 0.2);
-            color: #a5b4fc;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-        }
-
-        /* Showcase Section - Platform Features */
-        .showcase-section {
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 24px;
-            padding: 60px 40px;
-            margin-top: 20px;
-        }
-
-        .showcase-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-        }
-
-        .showcase-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 30px;
-            transition: all 0.3s ease;
-        }
-
-        .showcase-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(102, 126, 234, 0.5);
-            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.2);
-        }
-
-        .showcase-card .card-icon {
-            font-size: 2.2rem;
-            margin-bottom: 15px;
-        }
-
-        .showcase-card h3 {
-            font-size: 1.25rem;
-            color: white;
-            margin-bottom: 12px;
-        }
-
-        .showcase-card .card-desc {
-            color: #b0b0b0;
-            font-size: 0.95rem;
-            line-height: 1.7;
-            margin-bottom: 15px;
-        }
-
-        .showcase-card .card-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-        }
-
-        .card-tag {
-            background: rgba(102, 126, 234, 0.15);
-            color: #a5b4fc;
-            padding: 3px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            border: 1px solid rgba(102, 126, 234, 0.2);
-        }
-
-        @media (max-width: 768px) {
-            .showcase-section {
-                padding: 30px 20px;
-            }
-
-            .showcase-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Hero model tags */
-        .hero-model-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            justify-content: center;
-            margin-bottom: 30px;
-        }
-
-        .hero-model-tag {
-            background: rgba(102, 126, 234, 0.2);
-            color: #a5b4fc;
-            padding: 5px 14px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            border: 1px solid rgba(102, 126, 234, 0.3);
+            .hero h1 { font-size: 1.8em; }
+            .hero p { font-size: 1em; }
+            .cta-btn { padding: 12px 24px; font-size: 1em; }
+            .section-title h2 { font-size: 1.6em; }
         }
     </style>
 </head>
 <body>
     <!-- Hero Section -->
     <section class="hero">
-        <div class="container">
-            <h1>🧠 数眼智能</h1>
-            <p class="subtitle">Token代理合作方案 - 多模型API中转平台</p>
-            <div class="hero-model-tags">
-                <span class="hero-model-tag">Claude Opus 4.8</span>
-                <span class="hero-model-tag">GPT-5.5</span>
-                <span class="hero-model-tag">DeepSeek V4 Pro</span>
-                <span class="hero-model-tag">Gemini 3.5</span>
-                <span class="hero-model-tag">Midjourney V7</span>
-                <span class="hero-model-tag">Sora-2</span>
-                <span class="hero-model-tag">600+ 模型</span>
+        <h1>数眼智能 Token 代理合作</h1>
+        <p>600+ AI 模型一站式聚合平台，零门槛成为代理，客户消费即获持续收益</p>
+        <div class="hero-tags">
+            <span>🤖 600+ 模型</span>
+            <span>💰 持续佣金</span>
+            <span>🚀 零门槛</span>
+            <span>📞 平台负责售后</span>
+        </div>
+        <div class="cta-group">
+            <a href="https://www.shuyanai.com/?promoter_code=8btjh5k3" class="cta-btn cta-primary">🇨🇳 国内平台注册</a>
+            <a href="https://www.dataeyes.ai/?promoter_code=usnqtrc3" class="cta-btn cta-secondary">🌐 国际平台注册</a>
+        </div>
+    </section>
+
+    <!-- What Is This -->
+    <section class="container">
+        <div class="section-title">
+            <h2>这是什么生意？</h2>
+            <p>数眼智能是一家专注于大模型 API 服务的平台，为企业提供稳定、低成本的一站式 AI 模型调用服务</p>
+        </div>
+        <div class="role-cards">
+            <div class="role-card">
+                <div class="icon">🏢</div>
+                <h3>平台负责</h3>
+                <p>产品、API接口、技术研发、运维保障、售后服务。代理不需要搭建模型，不需要处理技术问题。</p>
             </div>
-            <div class="hero-buttons">
-                <a href="https://www.dataeyes.ai/?promoter_code=usnqtrc3" class="btn btn-primary" target="_blank">
-                    🌐 国外平台注册
-                </a>
-                <a href="https://www.shuyanai.com/?promoter_code=8btjh5k3" class="btn btn-primary" target="_blank">
-                    🇨🇳 国内平台注册
-                </a>
-                <a href="#start" class="btn btn-secondary">
-                    了解更多 ↓
-                </a>
+            <div class="role-card">
+                <div class="icon">🤝</div>
+                <h3>代理负责</h3>
+                <p>客户推广、资源对接、关系维护。通过小红书、抖音、闲鱼、朋友圈等渠道推广平台。</p>
+            </div>
+            <div class="role-card">
+                <div class="icon">💰</div>
+                <h3>收益模式</h3>
+                <p>客户通过您的链接注册后，后续所有 API 消费都会为您带来持续佣金收入。客户用得越多，您赚得越多。</p>
             </div>
         </div>
     </section>
 
-    <!-- Dual Platform Section -->
-    <section id="start">
-        <div class="container">
-            <div class="section-title">
-                <h2>🌐 双平台支持</h2>
-                <p>同时覆盖国内外主流AI模型，满足不同用户需求</p>
+    <!-- Benefits -->
+    <section class="container" style="background: #f8f9fa;">
+        <div class="section-title">
+            <h2>为什么选择数眼智能代理？</h2>
+            <p>轻资产、低风险、可持续的 AI 赛道创业机会</p>
+        </div>
+        <div class="benefits-grid">
+            <div class="benefit-item">
+                <div class="icon">🚀</div>
+                <h3>零门槛入局</h3>
+                <p>注册即可成为代理，无需资金投入，无需技术背景</p>
             </div>
-            <div class="platform-cards">
-                <div class="platform-card">
-                    <span class="tag tag-global">🌍 国外模型平台</span>
-                    <h3>DataEyes AI</h3>
+            <div class="benefit-item">
+                <div class="icon">📈</div>
+                <h3>持续被动收益</h3>
+                <p>客户持续消费，您持续获得佣金，建立长期收入流</p>
+            </div>
+            <div class="benefit-item">
+                <div class="icon">🔧</div>
+                <h3>平台全包售后</h3>
+                <p>技术问题、客服支持全部由平台处理，代理专注推广</p>
+            </div>
+            <div class="benefit-item">
+                <div class="icon">🎯</div>
+                <h3>市场需求旺盛</h3>
+                <p>AI 应用爆发式增长，企业对 API 的需求持续上升</p>
+            </div>
+            <div class="benefit-item">
+                <div class="icon">💼</div>
+                <h3>企业级服务</h3>
+                <p>支持对公转账、开具发票，满足企业客户采购需求</p>
+            </div>
+            <div class="benefit-item">
+                <div class="icon">📚</div>
+                <h3>全套推广素材</h3>
+                <p>提供文案模板、海报、教程等推广物料，快速上手</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="container how-it-works">
+        <div class="section-title">
+            <h2>合作流程</h2>
+            <p>5 步开启您的 AI 代理事业</p>
+        </div>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h4>注册账号</h4>
+                <p>访问国内或国际平台完成注册</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h4>获取推广链接</h4>
+                <p>在钱包管理 → 邀请奖励中获取专属链接</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h4>开始推广</h4>
+                <p>在社交媒体、社群、朋友圈分享链接</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h4>客户注册消费</h4>
+                <p>客户通过您的链接注册并充值使用</p>
+            </div>
+            <div class="step">
+                <div class="step-number">5</div>
+                <h4>获得佣金</h4>
+                <p>自动绑定关系，持续获得佣金返利</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platforms -->
+    <section class="container">
+        <div class="section-title">
+            <h2>双平台支持</h2>
+            <p>覆盖国内外主流 AI 模型，满足不同客户需求</p>
+        </div>
+        <div class="platforms">
+            <!-- International Platform -->
+            <div class="platform-card">
+                <div class="platform-header international">
+                    <h3>🌐 DataEyes AI</h3>
+                    <div class="domain">dataeyes.ai</div>
+                </div>
+                <div class="platform-body">
                     <ul>
-                        <li>Claude (Opus 4.8 / Sonnet 4.7 / Haiku)</li>
-                        <li>GPT-5.5 / GPT-4o / GPT-4 Turbo</li>
-                        <li>Gemini 3.5 Flash / Gemini 2.5 Pro</li>
+                        <li>Claude Opus / Sonnet / Haiku 全系列</li>
+                        <li>GPT-4o / GPT-4 Turbo / GPT-3.5</li>
+                        <li>Gemini 2.5 Pro / Flash</li>
                         <li>DeepSeek V4 Pro / R1</li>
                         <li>Midjourney V7 / DALL-E 3 / Flux Pro</li>
                         <li>Sora-2 / VEO3 / Kling 2.0</li>
-                        <li>600+ 模型持续更新...</li>
+                        <li>600+ 模型持续更新</li>
                     </ul>
-                    <a href="https://www.dataeyes.ai/?promoter_code=usnqtrc3" class="btn btn-primary" target="_blank">
-                        立即注册 →
-                    </a>
                 </div>
-                <div class="platform-card">
-                    <span class="tag tag-domestic">🇨🇳 国内模型平台</span>
-                    <h3>数眼AI (ShuYan AI)</h3>
+                <div class="platform-cta">
+                    <a href="https://www.dataeyes.ai/?promoter_code=usnqtrc3">立即注册 →</a>
+                </div>
+            </div>
+            <!-- Domestic Platform -->
+            <div class="platform-card">
+                <div class="platform-header domestic">
+                    <h3>🇨🇳 数眼 AI</h3>
+                    <div class="domain">shuyanai.com</div>
+                </div>
+                <div class="platform-body">
                     <ul>
                         <li>DeepSeek V4 Pro / R1</li>
-                        <li>GLM-5.1 (智谱AI)</li>
+                        <li>GLM-5.1（智谱AI）</li>
                         <li>通义千问 Qwen3</li>
                         <li>豆包 Doubao</li>
-                        <li>Kimi (月之暗面)</li>
+                        <li>Kimi（月之暗面）</li>
                         <li>MiniMax-M3</li>
-                        <li>更多模型持续更新...</li>
-                    </ul>
-                    <a href="https://www.shuyanai.com/?promoter_code=8btjh5k3" class="btn btn-primary" target="_blank">
-                        立即注册 →
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Quick Start Section -->
-    <section style="background: rgba(255,255,255,0.02);">
-        <div class="container">
-            <div class="section-title">
-                <h2>🚀 快速开始</h2>
-                <p>5步开启您的Token代理之旅</p>
-            </div>
-            <div class="steps-grid">
-                <div class="step-card">
-                    <div class="step-number">1</div>
-                    <h3>注册账号</h3>
-                    <p>访问注册地址，选择适合的平台完成注册</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">2</div>
-                    <h3>成为代理</h3>
-                    <p>在钱包管理→邀请奖励中获取专属推广链接</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">3</div>
-                    <h3>开始获客</h3>
-                    <p>在小红书、闲鱼、抖音等平台推广</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">4</div>
-                    <h3>客户购买</h3>
-                    <p>客户通过您的邀请链接注册并充值</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">5</div>
-                    <h3>获得佣金</h3>
-                    <p>自动绑定推广关系，获得持续佣金返利</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Guide Section -->
-    <section>
-        <div class="container">
-            <div class="section-title">
-                <h2>📢 获客详细指南</h2>
-                <p>多平台推广策略与文案参考</p>
-            </div>
-            <div class="guide-section">
-                <div class="guide-grid">
-                    <div class="guide-item">
-                        <h4>📕 小红书</h4>
-                        <p>发布AI使用教程、工具测评</p>
-                    </div>
-                    <div class="guide-item">
-                        <h4>🛒 闲鱼</h4>
-                        <p>上架API充值服务</p>
-                    </div>
-                    <div class="guide-item">
-                        <h4>📺 抖音</h4>
-                        <p>评论区截流，问答引流</p>
-                    </div>
-                    <div class="guide-item">
-                        <h4>🐦 Twitter/X</h4>
-                        <p>技术社区推广</p>
-                    </div>
-                </div>
-
-                <div class="copy-box">
-                    <h4>📝 宣传文案参考（国外模型）</h4>
-                    <p><strong>标题：</strong>Claude/GPT/Gemini API 低价中转</p>
-                    <ul>
-                        <li>1块钱即可测试，支持 Claude Sonnet 4.7 / GPT-4o / Gemini Pro</li>
-                        <li>24小时在线，稳定高速</li>
-                        <li>额度永不过期，想用随时用</li>
-                        <li>支持开发者 API 调用，兼容多种工具</li>
-                        <li>满血版模型，代码生成、逻辑推理拉满</li>
-                        <li>支持 CherryStudio、VSCode、Cline 等第三方软件</li>
+                        <li>更多国产模型持续接入</li>
                     </ul>
                 </div>
-
-                <div class="copy-box">
-                    <h4>📝 宣传文案参考（国内模型）</h4>
-                    <p><strong>标题：</strong>DeepSeek / Kimi / GLM API 特惠</p>
-                    <ul>
-                        <li>DeepSeek R1 推理模型低价调用</li>
-                        <li>Kimi 长文本处理，128K上下文</li>
-                        <li>智谱 GLM-4 全系列支持</li>
-                        <li>国内直连，无需翻墙</li>
-                        <li>企业用户支持开票</li>
-                    </ul>
+                <div class="platform-cta">
+                    <a href="https://www.shuyanai.com/?promoter_code=8btjh5k3">立即注册 →</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section style="background: rgba(255,255,255,0.02);">
-        <div class="container">
-            <div class="section-title">
-                <h2>✨ 为什么选择数眼智能</h2>
-                <p>平台优势 · 代理无忧</p>
+    <!-- FAQ -->
+    <section class="container faq">
+        <div class="section-title">
+            <h2>常见问题</h2>
+            <p>快速了解代理合作详情</p>
+        </div>
+        <div class="faq-list">
+            <div class="faq-item">
+                <div class="faq-question">如何成为代理？</div>
+                <div class="faq-answer">注册数眼智能平台后，在"钱包管理"→"邀请奖励"中即可获取您的专属推广链接。客户通过您的链接注册后，将自动绑定为您的下级客户。</div>
             </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🔧</div>
-                    <div class="feature-content">
-                        <h3>600+ 全栈模型</h3>
-                        <p>文本（Claude/GPT/DeepSeek）、图像（Midjourney/DALL-E/Flux）、视频（Sora-2/VEO3/Kling）、音频、Embedding，一个Key全搞定</p>
-                    </div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⏰</div>
-                    <div class="feature-content">
-                        <h3>额度永不过期</h3>
-                        <p>充值后额度永不过期，想用可以随时使用，无时间限制</p>
-                    </div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💰</div>
-                    <div class="feature-content">
-                        <h3>超高性价比</h3>
-                        <p>1块钱足够跑完一个中型项目，开发者友好，成本可控</p>
-                    </div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🚀</div>
-                    <div class="feature-content">
-                        <h3>开箱即用</h3>
-                        <p>注册即可使用，API Key 即时生成，配置简单</p>
-                    </div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💼</div>
-                    <div class="feature-content">
-                        <h3>企业支持</h3>
-                        <p>支持企业长期合作，支持开具发票</p>
-                    </div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📈</div>
-                    <div class="feature-content">
-                        <h3>长期被动收益</h3>
-                        <p>客户后续持续消费，代理持续获得分润，建立长期被动收入</p>
-                    </div>
-                </div>
+            <div class="faq-item">
+                <div class="faq-question">佣金如何结算？</div>
+                <div class="faq-answer">具体佣金比例和结算周期以平台官方政策为准。注册后进入代理后台可查看最新佣金规则，或联系客服了解详情。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">客户如何绑定到我这里？</div>
+                <div class="faq-answer">带有您推广码的链接跳转去注册后，用户会自动绑定到您的推荐里面。客户后续的所有消费都会持续给您返佣。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">我需要提供技术支持吗？</div>
+                <div class="faq-answer">不需要。平台负责所有技术问题、运维保障和售后服务。您只需专注于客户推广和关系维护。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">支持哪些模型？</div>
+                <div class="faq-answer"><strong>国际平台：</strong>Claude、GPT、Gemini、DeepSeek、Midjourney、DALL-E、Sora等 600+ 模型<br><strong>国内平台：</strong>DeepSeek、GLM、Qwen、Doubao、Kimi、MiniMax 等主流国产模型</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">两个平台都需要注册吗？</div>
+                <div class="faq-answer">不需要。根据您的客户需求选择相应平台推广即可。国外客户或需要调用国际模型的客户推荐 dataeyes.ai，国内客户推荐 shuyanai.com。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">额度有期限限制吗？</div>
+                <div class="faq-answer">额度永不过期。充值后可以随时使用，没有时间限制。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">企业用户可以开票吗？</div>
+                <div class="faq-answer">可以的，支持开具增值税发票。具体税率和开票内容可联系客服了解详情。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">如何吸引客户通过我的链接下单？</div>
+                <div class="faq-answer">您可以在推广后台设置 1%-10% 的客户折扣优惠，客户通过您的链接下单可享受优惠，这样能有效提升转化率。</div>
             </div>
         </div>
     </section>
 
-
-    <!-- Platform Showcase Section -->
-    <section>
-        <div class="container">
-            <div class="section-title">
-                <h2>🏗️ 平台功能全景</h2>
-                <p>600+模型 · 全栈AI能力 · 一站式平台</p>
-            </div>
-            <div class="showcase-section">
-                <div class="showcase-grid">
-                    <div class="showcase-card">
-                        <div class="card-icon">🤖</div>
-                        <h3>Models Hub - 600+模型统一API</h3>
-                        <p class="card-desc">一个API Key调遍所有主流AI模型。文本、图像、视频、音频、Embedding全覆盖，OpenAI兼容协议无缝切换。</p>
-                        <div class="card-tags">
-                            <span class="card-tag">Claude Opus 4.8</span>
-                            <span class="card-tag">GPT-5.5</span>
-                            <span class="card-tag">DeepSeek V4 Pro</span>
-                            <span class="card-tag">Gemini 3.5</span>
-                            <span class="card-tag">Midjourney V7</span>
-                            <span class="card-tag">Sora-2</span>
-                            <span class="card-tag">DALL-E 3</span>
-                            <span class="card-tag">Flux Pro</span>
-                            <span class="card-tag">VEO3</span>
-                        </div>
-                    </div>
-                    <div class="showcase-card">
-                        <div class="card-icon">🧩</div>
-                        <h3>Agents 工作台</h3>
-                        <p class="card-desc">在线使用多模型对话、AI生图、AI生视频、模型对比，无需任何配置，开箱即用。支持Text Gen、Image Gen、Video Gen、Text Compare四大模块。</p>
-                        <div class="card-tags">
-                            <span class="card-tag">Text Gen</span>
-                            <span class="card-tag">Image Gen</span>
-                            <span class="card-tag">Video Gen</span>
-                            <span class="card-tag">Text Compare</span>
-                        </div>
-                    </div>
-                    <div class="showcase-card">
-                        <div class="card-icon">🔍</div>
-                        <h3>Web Reader & Search</h3>
-                        <p class="card-desc">网页智能解析准确率99%+，支持PDF/DOCX/XLSX等格式。Deep Search深度搜索，多步推理自动整合信息。联网搜索API实时获取最新资讯。</p>
-                        <div class="card-tags">
-                            <span class="card-tag">网页解析</span>
-                            <span class="card-tag">Deep Search</span>
-                            <span class="card-tag">联网搜索API</span>
-                            <span class="card-tag">文档分析</span>
-                        </div>
-                    </div>
-                    <div class="showcase-card">
-                        <div class="card-icon">💻</div>
-                        <h3>AI Coding</h3>
-                        <p class="card-desc">接入Claude Code、OpenAI Codex、VS Code、Antigravity等主流AI编程工具。支持URL/截图一键生成代码，开发者效率翻倍。</p>
-                        <div class="card-tags">
-                            <span class="card-tag">Claude Code</span>
-                            <span class="card-tag">Codex</span>
-                            <span class="card-tag">VS Code</span>
-                            <span class="card-tag">Antigravity</span>
-                            <span class="card-tag">URL生成代码</span>
-                        </div>
-                    </div>
-                    <div class="showcase-card" style="grid-column: span 2; border-color: rgba(236, 72, 153, 0.3);">
-                        <div class="card-icon" style="background: linear-gradient(135deg, #ec4899 0%, #f97316 100%);">🎬</div>
-                        <h3>AI 漫剧 / 短剧 全链路生产</h3>
-                        <p class="card-desc">面向内容创作者和MCN机构的AI漫剧/短剧一站式生产平台。从角色IP设计、剧本AI生成、分镜自动排版，到海报合成、视频延展输出，全流程AI驱动，大幅降低内容生产成本。支持多种画风和叙事风格，适合短视频平台、漫画平台、小说改编等场景。</p>
-                        <div class="card-tags">
-                            <span class="card-tag">AI漫剧</span>
-                            <span class="card-tag">AI短剧</span>
-                            <span class="card-tag">角色IP生成</span>
-                            <span class="card-tag">剧本AI创作</span>
-                            <span class="card-tag">分镜自动排版</span>
-                            <span class="card-tag">海报合成</span>
-                            <span class="card-tag">视频延展</span>
-                            <span class="card-tag">多画风支持</span>
-                        </div>
-                    </div>
-                    <div class="showcase-card" style="grid-column: span 2; border-color: rgba(59, 130, 246, 0.3);">
-                        <div class="card-icon" style="background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);">⚡</div>
-                        <h3>Workflow 工作流 — 企业级自动化引擎</h3>
-                        <p class="card-desc">可视化拖拽搭建复杂业务流程，支持MCP协议对接外部工具和数据源。三种执行模式覆盖从人工审核到全自动无人值守的全部场景。适用于：AI客服自动化、内容批量生产、数据处理流水线、电商运营自动化、知识库问答搭建等企业级业务场景。可独立部署，也可作为业务系统的AI能力层。</p>
-                        <div class="card-tags">
-                            <span class="card-tag">AI客服自动化</span>
-                            <span class="card-tag">内容批量生产</span>
-                            <span class="card-tag">数据处理流水线</span>
-                            <span class="card-tag">电商运营自动化</span>
-                            <span class="card-tag">知识库问答</span>
-                            <span class="card-tag">标准模式</span>
-                            <span class="card-tag">自动执行</span>
-                            <span class="card-tag">Yolo全托管</span>
-                            <span class="card-tag">MCP协议</span>
-                            <span class="card-tag">可视化拖拽</span>
-                        </div>
-                    </div>
-                    <div class="showcase-card">
-                        <div class="card-icon">🦀</div>
-                        <h3>OpenClaw 执行框架</h3>
-                        <p class="card-desc">基于DataEyesAI的Agent执行框架，为AI应用开发者提供标准化的Agent部署和运行环境。</p>
-                        <div class="card-tags">
-                            <span class="card-tag">Agent框架</span>
-                            <span class="card-tag">标准化部署</span>
-                            <span class="card-tag">开放生态</span>
-                        </div>
-                    </div>
-                    <div class="showcase-card">
-                        <div class="card-icon">💰</div>
-                        <h3>超值定价</h3>
-                        <p class="card-desc">调用成本约为官方价格的1/3。按量计费，用多少付多少，额度永不过期。企业用户支持开票。</p>
-                        <div class="card-tags">
-                            <span class="card-tag">成本1/3</span>
-                            <span class="card-tag">按量计费</span>
-                            <span class="card-tag">额度永不过期</span>
-                            <span class="card-tag">企业开票</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Key Business Section -->
-    <section style="background: linear-gradient(180deg, rgba(102,126,234,0.08) 0%, rgba(0,0,0,0) 100%);">
-        <div class="container">
-            <div class="section-title">
-                <h2>🎯 核心业务场景</h2>
-                <p>AI漫剧工作流 · 电商营销工作流 · 一语成片 — 三大方向直接落地变现</p>
-            </div>
-
-            <!-- AI漫剧短剧工作流 -->
-            <div style="background: linear-gradient(135deg, rgba(236,72,153,0.12) 0%, rgba(249,115,22,0.08) 100%); border: 2px solid rgba(236,72,153,0.35); border-radius: 24px; padding: 40px; margin-bottom: 30px;">
-                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
-                    <span style="font-size: 2.5rem;">🎬</span>
-                    <div>
-                        <h3 style="font-size: 1.6rem; color: white; margin: 0;">AI 漫剧 / 短剧工作流</h3>
-                        <p style="color: #ec4899; font-size: 0.95rem; margin: 4px 0 0;">全流程自动化 · 一句话生成完整漫剧</p>
-                    </div>
-                </div>
-                <p style="color: #b0b0b0; line-height: 1.8; margin-bottom: 25px;">输入一段文字描述或小说章节，AI自动完成：角色设计→剧本改编→分镜排版→画面生成→视频合成。无需手绘、无需剪辑，一个人就能批量产出漫剧内容。</p>
-                <!-- Workflow Pipeline -->
-                <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px; margin-bottom: 25px; padding: 20px; background: rgba(0,0,0,0.2); border-radius: 16px;">
-                    <div style="background: rgba(236,72,153,0.2); border: 1px solid rgba(236,72,153,0.4); border-radius: 12px; padding: 12px 16px; text-align: center; min-width: 100px;">
-                        <div style="font-size: 1.5rem;">💬</div>
-                        <div style="color: #ec4899; font-size: 0.8rem; font-weight: 700; margin-top: 4px;">输入文案</div>
-                        <div style="color: #888; font-size: 0.7rem;">文字/小说</div>
-                    </div>
-                    <div style="color: #ec4899; font-size: 1.2rem;">→</div>
-                    <div style="background: rgba(236,72,153,0.2); border: 1px solid rgba(236,72,153,0.4); border-radius: 12px; padding: 12px 16px; text-align: center; min-width: 100px;">
-                        <div style="font-size: 1.5rem;">🤖</div>
-                        <div style="color: #ec4899; font-size: 0.8rem; font-weight: 700; margin-top: 4px;">AI剧本</div>
-                        <div style="color: #888; font-size: 0.7rem;">自动改编</div>
-                    </div>
-                    <div style="color: #ec4899; font-size: 1.2rem;">→</div>
-                    <div style="background: rgba(236,72,153,0.2); border: 1px solid rgba(236,72,153,0.4); border-radius: 12px; padding: 12px 16px; text-align: center; min-width: 100px;">
-                        <div style="font-size: 1.5rem;">🎨</div>
-                        <div style="color: #ec4899; font-size: 0.8rem; font-weight: 700; margin-top: 4px;">角色生成</div>
-                        <div style="color: #888; font-size: 0.7rem;">固定IP形象</div>
-                    </div>
-                    <div style="color: #ec4899; font-size: 1.2rem;">→</div>
-                    <div style="background: rgba(236,72,153,0.2); border: 1px solid rgba(236,72,153,0.4); border-radius: 12px; padding: 12px 16px; text-align: center; min-width: 100px;">
-                        <div style="font-size: 1.5rem;">🖼️</div>
-                        <div style="color: #ec4899; font-size: 0.8rem; font-weight: 700; margin-top: 4px;">分镜排版</div>
-                        <div style="color: #888; font-size: 0.7rem;">自动构图</div>
-                    </div>
-                    <div style="color: #ec4899; font-size: 1.2rem;">→</div>
-                    <div style="background: rgba(236,72,153,0.2); border: 1px solid rgba(236,72,153,0.4); border-radius: 12px; padding: 12px 16px; text-align: center; min-width: 100px;">
-                        <div style="font-size: 1.5rem;">🎥</div>
-                        <div style="color: #ec4899; font-size: 0.8rem; font-weight: 700; margin-top: 4px;">一语成片</div>
-                        <div style="color: #888; font-size: 0.7rem;">自动合成</div>
-                    </div>
-                </div>
-                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;">
-                    <div style="background: rgba(0,0,0,0.15); border-radius: 10px; padding: 14px; text-align: center;">
-                        <div style="color: #f97316; font-weight: 700; font-size: 0.9rem;">📱 抖音/快手</div>
-                        <div style="color: #888; font-size: 0.8rem; margin-top: 4px;">短视频批量发布</div>
-                    </div>
-                    <div style="background: rgba(0,0,0,0.15); border-radius: 10px; padding: 14px; text-align: center;">
-                        <div style="color: #f97316; font-weight: 700; font-size: 0.9rem;">📖 网文IP改编</div>
-                        <div style="color: #888; font-size: 0.8rem; margin-top: 4px;">小说→漫剧变现</div>
-                    </div>
-                    <div style="background: rgba(0,0,0,0.15); border-radius: 10px; padding: 14px; text-align: center;">
-                        <div style="color: #f97316; font-weight: 700; font-size: 0.9rem;">🏢 MCN机构</div>
-                        <div style="color: #888; font-size: 0.8rem; margin-top: 4px;">规模化内容生产</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 电商营销工作流 -->
-            <div style="background: linear-gradient(135deg, rgba(34,197,94,0.12) 0%, rgba(59,130,246,0.08) 100%); border: 2px solid rgba(34,197,94,0.35); border-radius: 24px; padding: 40px; margin-bottom: 30px;">
-                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
-                    <span style="font-size: 2.5rem;">🛒</span>
-                    <div>
-                        <h3 style="font-size: 1.6rem; color: white; margin: 0;">电商营销工作流</h3>
-                        <p style="color: #22c55e; font-size: 0.95rem; margin: 4px 0 0;">自动化电商内容生产 · 从商品到营销素材一键生成</p>
-                    </div>
-                </div>
-                <p style="color: #b0b0b0; line-height: 1.8; margin-bottom: 25px;">通过Workflow搭建电商营销自动化流水线：商品图批量生成、营销文案自动撰写、短视频脚本+画面一键产出、多平台分发。告别重复劳动，一个人管十个店铺的营销内容。</p>
-                <!-- Workflow Pipeline -->
-                <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px; margin-bottom: 25px; padding: 20px; background: rgba(0,0,0,0.2); border-radius: 16px;">
-                    <div style="background: rgba(34,197,94,0.2); border: 1px solid rgba(34,197,94,0.4); border-radius: 12px; padding: 12px 16px; text-align: center; min-width: 100px;">
-                        <div style="font-size: 1.5rem;">📦</div>
-                        <div style="color: #22c55e; font-size: 0.8rem; font-weight: 700; margin-top: 4px;">商品导入</div>
-                        <div style="color: #888; font-size: 0.7rem;">图片/链接</div>
-                    </div>
-                    <div style="color: #22c55e; font-size: 1.2rem;">→</div>
-                    <div style="background: rgba(34,197,94,0.2); border: 1px solid rgba(34,197,94,0.4); border-radius: 12px; padding: 12px 16px; text-align: center; min-width: 100px;">
-                        <div style="font-size: 1.5rem;">🖼️</div>
-                        <div style="color: #22c55e; font-size: 0.8rem; font-weight: 700; margin-top: 4px;">主图生成</div>
-                        <div style="color: #888; font-size: 0.7rem;">AI商品图</div>
-                    </div>
-                    <div style="color: #22c55e; font-size: 1.2rem;">→</div>
-                    <div style="background: rgba(34,197,94,0.2); border: 1px solid rgba(34,197,94,0.4); border-radius: 12px; padding: 12px 16px; text-align: center; min-width: 100px;">
-                        <div style="font-size: 1.5rem;">✍️</div>
-                        <div style="color: #22c55e; font-size: 0.8rem; font-weight: 700; margin-top: 4px;">营销文案</div>
-                        <div style="color: #888; font-size: 0.7rem;">多风格适配</div>
-                    </div>
-                    <div style="color: #22c55e; font-size: 1.2rem;">→</div>
-                    <div style="background: rgba(34,197,94,0.2); border: 1px solid rgba(34,197,94,0.4); border-radius: 12px; padding: 12px 16px; text-align: center; min-width: 100px;">
-                        <div style="font-size: 1.5rem;">🎥</div>
-                        <div style="color: #22c55e; font-size: 0.8rem; font-weight: 700; margin-top: 4px;">带货视频</div>
-                        <div style="color: #888; font-size: 0.7rem;">脚本+画面</div>
-                    </div>
-                    <div style="color: #22c55e; font-size: 1.2rem;">→</div>
-                    <div style="background: rgba(34,197,94,0.2); border: 1px solid rgba(34,197,94,0.4); border-radius: 12px; padding: 12px 16px; text-align: center; min-width: 100px;">
-                        <div style="font-size: 1.5rem;">📤</div>
-                        <div style="color: #22c55e; font-size: 0.8rem; font-weight: 700; margin-top: 4px;">多平台分发</div>
-                        <div style="color: #888; font-size: 0.7rem;">一键投放</div>
-                    </div>
-                </div>
-                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;">
-                    <div style="background: rgba(0,0,0,0.15); border-radius: 10px; padding: 14px; text-align: center;">
-                        <div style="color: #3b82f6; font-weight: 700; font-size: 0.9rem;">🏪 淘宝/拼多多</div>
-                        <div style="color: #888; font-size: 0.8rem; margin-top: 4px;">商品主图批量生成</div>
-                    </div>
-                    <div style="background: rgba(0,0,0,0.15); border-radius: 10px; padding: 14px; text-align: center;">
-                        <div style="color: #3b82f6; font-weight: 700; font-size: 0.9rem;">📺 抖音电商</div>
-                        <div style="color: #888; font-size: 0.8rem; margin-top: 4px;">带货视频自动化</div>
-                    </div>
-                    <div style="background: rgba(0,0,0,0.15); border-radius: 10px; padding: 14px; text-align: center;">
-                        <div style="color: #3b82f6; font-weight: 700; font-size: 0.9rem;">🌐 跨境电商</div>
-                        <div style="color: #888; font-size: 0.8rem; margin-top: 4px;">多语言营销素材</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 一语成片 -->
-            <div style="background: linear-gradient(135deg, rgba(139,92,246,0.12) 0%, rgba(59,130,246,0.08) 100%); border: 2px solid rgba(139,92,246,0.35); border-radius: 24px; padding: 40px; margin-bottom: 30px;">
-                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
-                    <span style="font-size: 2.5rem;">✨</span>
-                    <div>
-                        <h3 style="font-size: 1.6rem; color: white; margin: 0;">一语成片</h3>
-                        <p style="color: #a78bfa; font-size: 0.95rem; margin: 4px 0 0;">一句话生成完整视频 · AI视频生成终极形态</p>
-                    </div>
-                </div>
-                <p style="color: #b0b0b0; line-height: 1.8; margin-bottom: 25px;">输入一句话描述，AI自动完成：脚本撰写→画面生成→配音合成→字幕添加→视频合成。支持Sora-2、VEO3、Kling 2.0、Runway Gen-4等顶级视频模型，一个API覆盖所有主流视频生成能力。</p>
-                <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px; margin-bottom: 25px; padding: 20px; background: rgba(0,0,0,0.2); border-radius: 16px;">
-                    <div style="background: rgba(139,92,246,0.2); border: 1px solid rgba(139,92,246,0.4); border-radius: 12px; padding: 14px 20px; text-align: center;">
-                        <div style="font-size: 1.5rem;">💬</div>
-                        <div style="color: #a78bfa; font-size: 0.85rem; font-weight: 700; margin-top: 6px;">"一个女孩在雨中奔跑"</div>
-                    </div>
-                    <div style="color: #a78bfa; font-size: 1.5rem; padding: 0 10px;">→</div>
-                    <div style="background: rgba(139,92,246,0.2); border: 1px solid rgba(139,92,246,0.4); border-radius: 12px; padding: 14px 20px; text-align: center;">
-                        <div style="font-size: 1.5rem;">🎬</div>
-                        <div style="color: #a78bfa; font-size: 0.85rem; font-weight: 700; margin-top: 6px;">完整视频输出</div>
-                    </div>
-                </div>
-                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;">
-                    <div style="background: rgba(0,0,0,0.15); border-radius: 10px; padding: 14px; text-align: center;">
-                        <div style="font-size: 1.2rem;">🎞️</div>
-                        <div style="color: #a78bfa; font-size: 0.8rem; font-weight: 600; margin-top: 4px;">Sora-2</div>
-                    </div>
-                    <div style="background: rgba(0,0,0,0.15); border-radius: 10px; padding: 14px; text-align: center;">
-                        <div style="font-size: 1.2rem;">🎞️</div>
-                        <div style="color: #a78bfa; font-size: 0.8rem; font-weight: 600; margin-top: 4px;">VEO3</div>
-                    </div>
-                    <div style="background: rgba(0,0,0,0.15); border-radius: 10px; padding: 14px; text-align: center;">
-                        <div style="font-size: 1.2rem;">🎞️</div>
-                        <div style="color: #a78bfa; font-size: 0.8rem; font-weight: 600; margin-top: 4px;">Kling 2.0</div>
-                    </div>
-                    <div style="background: rgba(0,0,0,0.15); border-radius: 10px; padding: 14px; text-align: center;">
-                        <div style="font-size: 1.2rem;">🎞️</div>
-                        <div style="color: #a78bfa; font-size: 0.8rem; font-weight: 600; margin-top: 4px;">Runway Gen-4</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Workflow底层能力说明 -->
-            <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 30px; text-align: center;">
-                <p style="color: #888; font-size: 0.95rem; margin-bottom: 15px;">以上三大场景均基于 <strong style="color: #3b82f6;">Workflow 工作流引擎</strong> 驱动</p>
-                <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-                    <div style="background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.3); border-radius: 10px; padding: 10px 20px;">
-                        <span style="color: #60a5fa; font-weight: 600;">🔧 可视化拖拽搭建</span>
-                    </div>
-                    <div style="background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.3); border-radius: 10px; padding: 10px 20px;">
-                        <span style="color: #60a5fa; font-weight: 600;">🔗 MCP协议对接</span>
-                    </div>
-                    <div style="background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.3); border-radius: 10px; padding: 10px 20px;">
-                        <span style="color: #60a5fa; font-weight: 600;">⚡ Yolo全自动模式</span>
-                    </div>
-                    <div style="background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.3); border-radius: 10px; padding: 10px 20px;">
-                        <span style="color: #60a5fa; font-weight: 600;">🤖 600+模型统一调用</span>
-                    </div>
-                </div>
-            </div>
-
-            <div style="text-align: center; margin-top: 35px;">
-                <a href="https://www.dataeyes.ai/?promoter_code=usnqtrc3" class="btn btn-primary" target="_blank" style="padding: 16px 40px; font-size: 1.1rem;">
-                    立即体验全部功能 →
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Talk Flow Section -->
-    <section>
-        <div class="container">
-            <div class="section-title">
-                <h2>💬 成交话术结构</h2>
-                <p>标准化沟通流程，提升转化效率</p>
-            </div>
-            <div class="talk-steps">
-                <div class="talk-card">
-                    <div class="talk-number">1</div>
-                    <div class="talk-content">
-                        <h3>确认需求</h3>
-                        <p>"你这个需求主要是稳定使用AI，对吧？如果是长期用，中转会比自己折腾方便很多。"</p>
-                    </div>
-                </div>
-                <div class="talk-card">
-                    <div class="talk-number">2</div>
-                    <div class="talk-content">
-                        <h3>给解决方案</h3>
-                        <p>"我们这边主要解决的是稳定入口、使用教程和后续问题处理。你不用自己研究太多，按教程走就能用。"</p>
-                    </div>
-                </div>
-                <div class="talk-card">
-                    <div class="talk-number">3</div>
-                    <div class="talk-content">
-                        <h3>给选择</h3>
-                        <p>"如果你只是自己用，可以先走基础方案；如果你是项目/团队用，我建议直接选更稳定的方案。"</p>
-                    </div>
-                </div>
-                <div class="talk-card">
-                    <div class="talk-number">4</div>
-                    <div class="talk-content">
-                        <h3>推进付款</h3>
-                        <p>"你要是确定用，我现在可以给你开通流程。付款后我发你教程和入口，有问题直接找我。"</p>
-                    </div>
-                </div>
-                <div class="talk-card">
-                    <div class="talk-number">5</div>
-                    <div class="talk-content">
-                        <h3>成交后交付</h3>
-                        <p>"收到，我现在给你发入口和教程。你先按这个步骤操作，卡在哪一步截图发我。"</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Customer Flow Section -->
-    <section style="background: rgba(255,255,255,0.02);">
-        <div class="container">
-            <div class="section-title">
-                <h2>👥 客户使用流程</h2>
-                <p>简化为3步，轻松上手</p>
-            </div>
-            <div class="flow-container">
-                <div class="flow-step">
-                    <div class="step-icon">📝</div>
-                    <h4>注册平台</h4>
-                    <p>通过推广链接注册账号</p>
-                </div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-step">
-                    <div class="step-icon">🔑</div>
-                    <h4>获取 API Key</h4>
-                    <p>在平台创建个人密钥</p>
-                </div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-step">
-                    <div class="step-icon">⚙️</div>
-                    <h4>配置使用</h4>
-                    <p>填入常用工具开始调用</p>
-                </div>
-            </div>
-
-            <div class="copy-box" style="max-width: 800px; margin: 40px auto 0;">
-                <h4>📖 配置说明</h4>
-                <p><strong>OpenAI 兼容协议：</strong></p>
-                <ul>
-                    <li>国外平台：使用平台提供的 API 地址</li>
-                    <li>国内平台：使用平台提供的 API 地址</li>
-                </ul>
-                <p style="margin-top: 15px;"><strong>支持的工具：</strong></p>
-                <ul>
-                    <li>CherryStudio、VSCode (Cline/Copilot)</li>
-                    <li>Chatbox、NextChat 等客户端</li>
-                    <li>Claude Code、OpenAI Codex（AI编程）</li>
-                    <li>支持 OpenAI API 协议的应用均可接入</li>
-                    <li>兼容 Workflow 工作流和 MCP 协议</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Agent Daily Actions -->
-    <section style="background: rgba(255,255,255,0.02);">
-        <div class="container">
-            <div class="section-title">
-                <h2>📅 代理每日动作</h2>
-                <p>简单4步，持续获客</p>
-            </div>
-            <div class="agent-section">
-                <h3>代理每天只做 4 件事</h3>
-                <div class="agent-grid">
-                    <div class="agent-item">
-                        <div class="num">1</div>
-                        <h4>发内容获客</h4>
-                        <p>发中转使用场景、AI工具教程</p>
-                    </div>
-                    <div class="agent-item">
-                        <div class="num">2</div>
-                        <h4>筛选客户</h4>
-                        <p>以成交为目的，先问用途</p>
-                    </div>
-                    <div class="agent-item">
-                        <div class="num">3</div>
-                        <h4>推进成交</h4>
-                        <p>有需求就报价、发链接</p>
-                    </div>
-                    <div class="agent-item">
-                        <div class="num">4</div>
-                        <h4>记录反馈</h4>
-                        <p>记录成交与问题，优化内容</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="copy-box" style="max-width: 800px; margin: 40px auto 0;">
-                <h4>⚠️ 给代理的核心提醒</h4>
-                <ul>
-                    <li>代理赚钱不是靠嘴皮子硬聊。是靠三件事：找到有需求的人，快速筛掉低质量客户，用标准话术把优质客户推到付款。</li>
-                    <li>不要和垃圾客户纠缠。不要免费当客服。不要无限解释。</li>
-                    <li>不要害怕报价。客户如果真有需求，价格不是最大问题。</li>
-                    <li>平台负责技术/运维/售后，代理负责推广/获客/客户维护。分工明确，轻松代理。</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section>
-        <div class="container">
-            <div class="section-title">
-                <h2>❓ 常见问题</h2>
-                <p>FAQ · 快速解答疑惑</p>
-            </div>
-            <div class="faq-list">
-                <div class="faq-item active">
-                    <div class="faq-question">1. 如何成为代理？</div>
-                    <div class="faq-answer">
-                        <p>注册数眼智能平台后，在"钱包管理"→"邀请奖励"中即可获取您的专属推广链接。客户通过您的链接注册后，将自动绑定为您的下级客户。</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">2. 佣金如何结算？</div>
-                    <div class="faq-answer">
-                        <p>具体佣金比例和结算周期以平台官方政策为准，请联系客服或查看代理后台了解最新规则。</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">3. 客户如何绑定到我这里？</div>
-                    <div class="faq-answer">
-                        <p>带有您推广码的链接跳转去注册后，用户会自动绑定到您的推荐里面。客户后续的所有消费都会持续给您返佣。</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">4. 支持哪些模型？</div>
-                    <div class="faq-answer">
-                        <p><strong>国外平台：</strong>Claude Opus 4.8/Sonnet 4.7、GPT-5.5/GPT-4o、DeepSeek V4 Pro/R1、Gemini 3.5 Flash、Midjourney V7、DALL-E 3、Flux Pro、Sora-2、VEO3、Kling 2.0等600+模型<br>
-                        <strong>国内平台：</strong>DeepSeek V4 Pro、GLM-5.1、Qwen3、Doubao、Kimi、MiniMax-M3等</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">5. 两个平台都需要注册吗？</div>
-                    <div class="faq-answer">
-                        <p>不需要。根据您的客户需求选择相应平台推广即可。国外客户推荐使用 dataeyes.ai，国内客户推荐使用 shuyanai.com。</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">6. API Key 如何生成？</div>
-                    <div class="faq-answer">
-                        <p>客户注册平台后，在平台界面自行生成 API Key。将 API Key 和平台提供的接口地址配置到常用工具中即可使用。</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">7. 企业用户可以开票吗？</div>
-                    <div class="faq-answer">
-                        <p>可以的，支持开票。具体税率和开票内容可联系客服了解详情。</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">8. 客户自己下单不通过我怎么办？</div>
-                    <div class="faq-answer">
-                        <p>您可以给自己的推广链接设置1%-10%的客户折扣优惠，这样客户通过您的链接下单有优惠，自然会选择从您这里购买。</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">9. 额度有期限限制吗？</div>
-                    <div class="faq-answer">
-                        <p>额度永不过期。充值后可以随时使用，没有时间限制。</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">10. 如何设置代理折扣吸引客户？</div>
-                    <div class="faq-answer">
-                        <p>您可以在推广后台设置1%-10%的客户折扣，客户通过您的专属链接下单可享受优惠，这样能有效吸引客户选择从您这里购买。</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">11. 平台除了API还有什么功能？</div>
-                    <div class="faq-answer">
-                        <p>数眼智能不只是API中转平台。除了600+模型统一API，还提供：Agents在线工作台（对话/生图/生视频）、Web Reader网页解析、Deep Search深度搜索、AI Coding编程工具、短剧AI生产工具箱、以及可视化Workflow工作流。是一个全栈AI能力平台。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section style="background: rgba(255,255,255,0.02);">
-        <div class="container">
-            <div class="section-title">
-                <h2>📞 联系我们</h2>
-                <p>开启您的Token代理之旅</p>
-            </div>
-            <div class="contact-grid">
-                <div class="contact-card">
-                    <div class="icon">🌐</div>
-                    <h3>国外平台</h3>
-                    <p><a href="https://www.dataeyes.ai/?promoter_code=usnqtrc3" target="_blank">dataeyes.ai</a></p>
-                </div>
-                <div class="contact-card">
-                    <div class="icon">🇨🇳</div>
-                    <h3>国内平台</h3>
-                    <p><a href="https://www.shuyanai.com/?promoter_code=8btjh5k3" target="_blank">shuyanai.com</a></p>
-                </div>
-                <div class="contact-card">
-                    <div class="icon">💬</div>
-                    <h3>微信</h3>
-                    <p><a href="#">（请联系客服获取）</a></p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Resources Section -->
-    <section>
-        <div class="container">
-            <div class="section-title">
-                <h2>📚 了解更多</h2>
-                <p>完整方案文档与图文教程</p>
-            </div>
-            <div class="resources-grid">
-                <a href="https://gcnhedtrx4k8.feishu.cn/wiki/GPCAwCCsFiUxmhkims9c78Dfn4f" class="resource-card" target="_blank">
-                    <div class="icon">📋</div>
-                    <h3>代理合作完整方案</h3>
-                    <p>飞书文档 · 详细合作政策与流程</p>
-                </a>
-
-            </div>
+    <!-- Contact -->
+    <section class="container contact">
+        <h2>开启您的 AI 代理事业</h2>
+        <p>立即注册，零门槛成为数眼智能代理</p>
+        <div class="contact-links">
+            <a href="https://www.dataeyes.ai/?promoter_code=usnqtrc3" class="contact-link">🌐 国际平台注册</a>
+            <a href="https://www.shuyanai.com/?promoter_code=8btjh5k3" class="contact-link">🇨🇳 国内平台注册</a>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>© 2025 数眼智能 Token代理合作方案 · 长期被动收益 · 轻松创业副业</p>
-        </div>
+    <footer class="footer">
+        <p>© 2026 数眼智能 Token 代理合作 | <a href="https://gcnhedtrx4k8.feishu.cn/wiki/GPCAwCCsFiUxmhkims9c78Dfn4f">查看完整合作方案</a></p>
+        <p style="margin-top: 10px; font-size: 0.85em;">海南数眼智能科技有限公司（国内站）| SG DataEyesAI Technology Limited（国际站）</p>
     </footer>
 
     <script>
         // FAQ Accordion
         document.querySelectorAll('.faq-question').forEach(question => {
             question.addEventListener('click', () => {
-                const faqItem = question.parentElement;
-                const isActive = faqItem.classList.contains('active');
+                const item = question.parentElement;
+                const isActive = item.classList.contains('active');
                 
-                // Close all items
-                document.querySelectorAll('.faq-item').forEach(item => {
-                    item.classList.remove('active');
-                });
+                // Close all
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
                 
-                // Toggle current item
+                // Open clicked if it wasn't active
                 if (!isActive) {
-                    faqItem.classList.add('active');
-                }
-            });
-        });
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    item.classList.add('active');
                 }
             });
         });
