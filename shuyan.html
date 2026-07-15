@@ -93,42 +93,12 @@
         .footer { background: #1a1a2e; color: #aaa; padding: 30px 20px; text-align: center; font-size: 0.9em; }
         .footer a { color: #667eea; text-decoration: none; }
         
-        /* Tier Cards */
-        .tier-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 40px; }
-        .tier-card { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.06); transition: transform 0.3s, box-shadow 0.3s; position: relative; }
-        .tier-card:hover { transform: translateY(-4px); box-shadow: 0 12px 35px rgba(0,0,0,0.1); }
-        .tier-card.featured { border: 2px solid #667eea; }
-        .tier-card.featured .tier-badge { display: inline-block; }
-        .tier-badge { display: none; position: absolute; top: 15px; right: 15px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.75em; font-weight: 600; }
-        .tier-header { padding: 30px 25px 20px; text-align: center; border-bottom: 1px solid #f0f0f0; }
-        .tier-header h3 { font-size: 1.3em; color: #333; margin-bottom: 8px; }
-        .tier-header .tier-rate { font-size: 2.8em; font-weight: 800; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .tier-header .tier-rate span { font-size: 0.5em; font-weight: 400; }
-        .tier-body { padding: 20px 25px 25px; }
-        .tier-body ul { list-style: none; }
-        .tier-body li { padding: 8px 0; color: #555; font-size: 0.95em; display: flex; align-items: flex-start; }
-        .tier-body li:before { content: "✓"; color: #667eea; font-weight: bold; margin-right: 10px; flex-shrink: 0; }
-        
-        /* Calculation Example */
-        .calc-box { background: white; border-radius: 16px; padding: 35px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); max-width: 800px; margin: 0 auto; }
-        .calc-box h3 { text-align: center; font-size: 1.3em; margin-bottom: 25px; color: #333; }
-        .calc-formula { background: #f8f9fa; border-radius: 10px; padding: 20px; margin-bottom: 20px; text-align: center; }
-        .calc-formula p { font-size: 1em; color: #555; margin-bottom: 8px; }
-        .calc-formula .formula { font-size: 1.1em; font-weight: 600; color: #667eea; }
-        .calc-example { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px; }
-        .calc-step { background: #f8f9fa; border-radius: 10px; padding: 15px; text-align: center; }
-        .calc-step .label { font-size: 0.85em; color: #888; margin-bottom: 5px; }
-        .calc-step .value { font-size: 1.2em; font-weight: 700; color: #333; }
-        .calc-step .value.highlight { color: #667eea; }
-        .calc-note { text-align: center; margin-top: 20px; color: #888; font-size: 0.9em; }
-        
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 { font-size: 1.8em; }
             .hero p { font-size: 1em; }
             .cta-btn { padding: 12px 24px; font-size: 1em; }
             .section-title h2 { font-size: 1.6em; }
-            .tier-header .tier-rate { font-size: 2.2em; }
         }
     </style>
 </head>
@@ -171,89 +141,6 @@
                 <h3>收益模式</h3>
                 <p>客户通过您的链接注册后，后续所有 API 消费都会为您带来持续佣金收入。客户用得越多，您赚得越多。</p>
             </div>
-        </div>
-    </section>
-
-    <!-- Agent Tiers & Commission -->
-    <section class="container" style="background: #f8f9fa;">
-        <div class="section-title">
-            <h2>代理等级与分润</h2>
-            <p>三个等级，按需升级，客户消耗越高分润越多</p>
-        </div>
-        <div class="tier-grid">
-            <!-- Tier 1 -->
-            <div class="tier-card">
-                <div class="tier-header">
-                    <h3>一级代理</h3>
-                    <div class="tier-rate">15<span>% 利润分润</span></div>
-                </div>
-                <div class="tier-body">
-                    <ul>
-                        <li>零门槛，注册即可</li>
-                        <li>适合个人推广、社群资源型代理</li>
-                        <li>朋友圈、微信群、短视频引流</li>
-                        <li>平台提供全套推广素材</li>
-                    </ul>
-                </div>
-            </div>
-            <!-- Tier 2 -->
-            <div class="tier-card featured">
-                <span class="tier-badge">热门</span>
-                <div class="tier-header">
-                    <h3>二级代理</h3>
-                    <div class="tier-rate">30<span>% 利润分润</span></div>
-                </div>
-                <div class="tier-body">
-                    <ul>
-                        <li>名下客户月均消耗达 1 万 USD</li>
-                        <li>适合企业资源型、渠道型代理</li>
-                        <li>共享平台技术支持</li>
-                        <li>重点客户协助成交</li>
-                    </ul>
-                </div>
-            </div>
-            <!-- Tier 3 -->
-            <div class="tier-card">
-                <div class="tier-header">
-                    <h3>三级代理</h3>
-                    <div class="tier-rate">50<span>% 利润分润</span></div>
-                </div>
-                <div class="tier-body">
-                    <ul>
-                        <li>名下客户月均消耗达 10 万 USD</li>
-                        <li>适合团队化运营、大客户渠道</li>
-                        <li>专属商务协助与客户保护</li>
-                        <li>大客户定制化方案支持</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!-- Calculation Example -->
-        <div class="calc-box">
-            <h3>💡 分润计算示例</h3>
-            <div class="calc-formula">
-                <p>分润基数 = 客户消费产生的利润（非消费总额）</p>
-                <p class="formula">利润 = 客户消费金额 −（客户消费金额 ÷ 用户折扣 × 成本折扣）</p>
-            </div>
-            <div class="calc-example">
-                <div class="calc-step">
-                    <div class="label">客户消费</div>
-                    <div class="value">100 元</div>
-                </div>
-                <div class="calc-step">
-                    <div class="label">用户折扣 0.3 / 成本折扣 0.1</div>
-                    <div class="value">利润 66.7 元</div>
-                </div>
-                <div class="calc-step">
-                    <div class="label">一级代理 15%</div>
-                    <div class="value">佣金 10 元</div>
-                </div>
-                <div class="calc-step">
-                    <div class="label">三级代理 50%</div>
-                    <div class="value highlight">佣金 33.35 元</div>
-                </div>
-            </div>
-            <p class="calc-note">佣金按月结算 · 绑定关系长期有效 · 客户持续使用即持续产生收益</p>
         </div>
     </section>
 
@@ -397,11 +284,7 @@
             </div>
             <div class="faq-item">
                 <div class="faq-question">佣金如何结算？</div>
-                <div class="faq-answer">佣金按月结算。平台根据客户消费产生的利润和您的代理等级计算分润：一级代理 15%、二级代理 30%、三级代理 50%。代理后台可实时查看客户消费和分润数据。</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">代理等级怎么升级？</div>
-                <div class="faq-answer">根据名下客户月均消耗划分：一级代理无门槛；月均消耗达 1 万 USD 可申请升级为二级代理（30%）；月均消耗达 10 万 USD 可申请升级为三级代理（50%）。等级调整仅影响后续新增订单，已产生订单不受影响。</div>
+                <div class="faq-answer">具体佣金比例和结算周期以平台官方政策为准。注册后进入代理后台可查看最新佣金规则，或联系客服了解详情。</div>
             </div>
             <div class="faq-item">
                 <div class="faq-question">客户如何绑定到我这里？</div>
